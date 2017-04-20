@@ -17,8 +17,8 @@ int critChance, critDamage, block, evade, deflect, DS, runePower, runeAgi;
 int counter;
 int hpdummy=100000;
 int countermax=100;
-float tr=2, interval;
-int i, attacktimer, j=0, attacksdone=0;
+float tr=2, interval, privatecounter=0;
+int cycle, attacktimer, j=0, attacksdone=0;
 
 
 
@@ -45,25 +45,25 @@ int main() {
     hp = stamina * 10;
     turnRate(power, agility);
     interval = countermax / tr;
-    updateTimer();
-    printf("attacktimer: %d\n", attacktimer);
+    //updateTimer();
+    //printf("attacktimer: %d\n", attacktimer);
     //printf("%f", tr);
     while (hp>0 && hpdummy>0){
-        for(i=1 ; i<=countermax ; i++){
-            printf("%d\n", hpdummy);
-            if(i >= attacktimer){
+        for(cycle=1 ; cycle<=countermax ; cycle++){
+            privatecounter++;
+            if(privatecounter >= interval){
                 hpdummy -= power;
-                j++;
+                privatecounter -= interval;
                 attacksdone++;
-                updateTimer();
+                
             }
         }
-        j=0;
+        
         
     }
-    printf("hits done: %d\n", j);
+    printf("hits done: %d\n", attacksdone);
     printf("hP: %d\n", hpdummy);
-    printf("attacktimer: %d", attacktimer);
+    
     
 }
 
