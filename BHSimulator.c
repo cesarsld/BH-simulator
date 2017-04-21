@@ -20,7 +20,7 @@ typedef struct {
     int hp;
     float tr;
     float interval;
-    int counter;
+    float counter;
 } Hero;
 Hero hero[5];           // size of array indicated max amount of heroes in team.
 
@@ -74,21 +74,22 @@ int main() {
     while (hpdummy>0){
         for(cycle=1 ; cycle<=countermax ; cycle++){
             privatecounter++;
-            if(privatecounter >= interval){
-                hpdummy -= power;
-                privatecounter -= interval;
-                attacksdone++;
-                
+            for(i=0 ; i<playerNo ; i++){
+                hero[i].counter++;
+                if(hero[i].counter >= hero[i].interval && hero[i].hp > 0){
+                    hpdummy -= hero[i].power;
+                    hero[i].counter -= hero[i].interval;
+                    attacksdone++;
+                    if (hpdummy>=0){
+                        break;
+                    }
+                }
             }
         }
-        
-        
     }
     printf("hits done: %d\n", attacksdone);
     printf("hP: %d\n", hpdummy);
     
-    
+
+
 }
-
-
-
