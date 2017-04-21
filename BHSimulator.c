@@ -11,7 +11,20 @@
 #include <time.h>
 #include <math.h>
 
-int a,b;
+
+                        //struct will contain all stats and informations on hero. Will update its content when code gets more complex.
+typedef struct {
+    int power;
+    int stamina;
+    int agility;
+    int hp;
+    float tr;
+    float interval;
+    int counter;
+} Hero;
+Hero hero[5];           // size of array indicated max amount of heroes in team.
+
+//int a,b;
 int power, stamina, agility, hp;
 int critChance, critDamage, block, evade, deflect, DS, runePower, runeAgi;
 int counter;
@@ -19,15 +32,17 @@ int hpdummy=100000;
 int countermax=100;
 float tr=2, interval, privatecounter=0;
 int cycle, attacktimer, j=0, attacksdone=0;
+int playerNo;
+int i;
 
 
 
 
-void turnRate(int a, int b){
+float turnRate(int b, int a){
     tr = ((a + b)/2);
     tr= pow(tr, 2);
     tr=tr/(100*b);
-    
+    return tr;
 }
 
 void updateTimer(){
@@ -39,16 +54,24 @@ void perfom_turn(){
 }
 
 int main() {
-    scanf("%d", &power);
-    scanf("%d", &stamina);
-    scanf("%d", &agility);
-    hp = stamina * 10;
-    turnRate(power, agility);
-    interval = countermax / tr;
-    //updateTimer();
-    //printf("attacktimer: %d\n", attacktimer);
-    //printf("%f", tr);
-    while (hp>0 && hpdummy>0){
+    printf("How many heroes will you use?\n");
+    scanf("%d", &playerNo);
+    for(i=0 ; i<playerNo ; i++){
+        printf("How much power on hero %d ?\n", i+1);
+        scanf("%d", &hero[i].power);
+        printf("How much stamina on hero %d ?\n", i+1);
+        scanf("%d", &hero[i].stamina);
+        printf("How much agility on hero %d ?\n", i+1);
+        scanf("%d", &hero[i].agility);
+        
+        hero[i].hp = hero[i].stamina * 10;
+        hero[i].tr = turnRate(hero[i].power, hero[i].agility);
+        hero[i].interval = countermax / hero[i].tr;
+        hero[i].counter=0;
+    }
+    
+    
+    while (hpdummy>0){
         for(cycle=1 ; cycle<=countermax ; cycle++){
             privatecounter++;
             if(privatecounter >= interval){
