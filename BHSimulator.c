@@ -49,9 +49,9 @@ void updateTimer(){
     attacktimer = interval * (1+ j);
 }
 
-void perfom_turn(){
+//void perfom_turn(){
     
-}
+//}
 
 int main() {
     printf("How many heroes will you use?\n");
