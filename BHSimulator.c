@@ -19,6 +19,7 @@ typedef struct {
     int stamina;
     int agility;
     int hp;
+    int maxhp;
     float tr;
     float interval;
     float counter;
@@ -33,6 +34,27 @@ Hero hero[5];           // size of array indicated max amount of heroes in team.
 
 int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy;
 
+void petproc(int l){
+    int i;
+    int healmodifier = hero[l].power * 0.072;
+    int healvalue = rand()% healmodifier + 0.324 * hero[l].power;
+    int healroll = rand()% 100 + 1;
+    int petroll = rand()%100 + 1;
+    if (healroll <= hero[l].critchance){
+        healvalue *= hero[l].critdamage;
+    }
+    if(petroll <= 20){
+        for (i=0 ; i<5 ; i++){
+            if (hero[i].hp >0){
+                hero[i].hp += healvalue;
+                if (hero[i].hp >= hero[i].maxhp){
+                    hero[i].hp = hero[i].maxhp;
+                }
+            }
+        }
+    }
+}
+
 float turnRate(int b, int a){
     float tr = 0;
     tr = ((a + b)/2);
@@ -45,7 +67,7 @@ bool RNGroll(float a){
     bool outcome;
     float chance = a * 10;
     int roll = rand()% 1000 +1;
-    if (roll < chance){
+    if (roll <= chance){
         outcome = true;
     } else {
         outcome = false;
@@ -53,8 +75,8 @@ bool RNGroll(float a){
     return outcome;
 }
 
-float heroattack(int k){
-    float attackvalue= 0 ;
+void heroattack(int k){
+    float attackvalue = 0;
     int attackmodifier = 0.2 * hero[k].power;
     int critroll = rand()%100 +1;
     attackvalue = rand()% attackmodifier + 0.9 * hero[k].power;
@@ -62,10 +84,10 @@ float heroattack(int k){
         attackvalue *= hero[k].critdamage;
     }
     int evaderoll = rand()%1000 + 1;
-    if (evaderoll < 25){
-        attackvalue = 0;
+    if (evaderoll > 25){
+        hpdummy -= attackvalue;
+        petproc(k);
     }
-    return attackvalue;
 }
 
 void bossattack(int k){
@@ -84,17 +106,25 @@ void bossattack(int k){
             blockroll = rand()% 100 + 1;
             if (blockroll <= hero[k].block){
                 hero[k].hp -= 0.5 * attackvalue;
-            } else {hero[k].hp -= attackvalue;}
+                petproc(k);
+            } else {hero[k].hp -= attackvalue;
+                    petproc(k);
+            }
         }
     } else {hpdummy -= attackvalue;}
 }
+
+
+
 
 int main() {
     int p;
     float win=0;
     int lose=0;
     float winrate;
+    
     srand((unsigned int)time(NULL));
+    
     for (p=0 ; p < 1000 ; p++){
     dummypower = 1700;
     dummystamina = 3060;
@@ -173,6 +203,7 @@ int main() {
         //scanf("%d", &hero[i].agility);
         
         hero[i].hp = hero[i].stamina * 10;
+        hero[i].maxhp = hero[i].hp;
         hero[i].tr = turnRate(hero[i].power, hero[i].agility);
         hero[i].interval = countermax / hero[i].tr;
         hero[i].counter=0;
@@ -185,11 +216,12 @@ int main() {
             for(i=0 ; i<playerNo ; i++){
                 hero[i].counter++;
                 if(hero[i].counter >= hero[i].interval && hero[i].hp > 0){
+                    petproc(i);
                     DS = RNGroll(hero[i].DSchance);
                     if (DS){
-                        hpdummy -= heroattack(i);
-                        hpdummy -= heroattack(i);
-                    } else { hpdummy -= heroattack(i);}
+                        heroattack(i);
+                        heroattack(i);
+                    } else {heroattack(i);}
                     hero[i].counter -= hero[i].interval;
                     if (hpdummy<=0){
                         //printf("You killed the dummy!\n");
@@ -202,23 +234,18 @@ int main() {
             if (hpdummy > 0 && dummycounter >= dummyinterval){
                 if (hero[0].hp > 0){
                     bossattack(0);
-                    //hero[0].hp -= dummypower;
                     dummycounter -= dummyinterval;
                 } else if (hero[1].hp > 0){
                     bossattack(1);
-                    //hero[1].hp -= dummypower;
                     dummycounter -= dummyinterval;
                 } else if (hero[2].hp > 0){
                     bossattack(2);
-                    //hero[2].hp -= dummypower;
                     dummycounter -= dummyinterval;
                 } else if (hero[3].hp > 0){
                     bossattack(3);
-                    //hero[3].hp -= dummypower;
                     dummycounter -= dummyinterval;
                 } else if (hero[4].hp > 0){
                     bossattack(4);
-                    //hero[4].hp -= dummypower;
                     dummycounter -= dummyinterval;
                 } else {
                     teamalive = false;
@@ -229,13 +256,8 @@ int main() {
         }
     }
     if (!teamalive){
-        //printf("You have been defeated\n");
         lose++;
     }
-    //printf("hits done: %d\n", attacksdone);
-    //printf("hP: %d\n", hpdummy);
-    
-
 
     }
     winrate = (win / 1000) * 100;
