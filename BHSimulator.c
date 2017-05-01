@@ -29,40 +29,15 @@ typedef struct {
     int block;
     int evade;
     int deflect;
+    float powerrune;
+    float agirune;
+    
 } Hero;
 Hero hero[5];           // size of array indicated max amount of heroes in team.
 
 int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy;
 
-void petproc(int l){
-    int i;
-    int healmodifier = hero[l].power * 0.072;
-    int healvalue = rand()% healmodifier + 0.324 * hero[l].power;
-    int healroll = rand()% 100 + 1;
-    int petroll = rand()%100 + 1;
-    if (healroll <= hero[l].critchance){
-        healvalue *= hero[l].critdamage;
-    }
-    if(petroll <= 20){
-        for (i=0 ; i<5 ; i++){
-            if (hero[i].hp >0){
-                hero[i].hp += healvalue;
-                if (hero[i].hp >= hero[i].maxhp){
-                    hero[i].hp = hero[i].maxhp;
-                }
-            }
-        }
-    }
-}
-
-float turnRate(int b, int a){
-    float tr = 0;
-    tr = ((a + b)/2);
-    tr = pow(tr, 2);
-    tr = tr/(100*b);
-    return tr;
-}
-
+// RNGroll serves as flag to say if roll is succesful (returns true) or not (returns false). Rolls on 1000 so that decimal aren't lost.
 bool RNGroll(float a){
     bool outcome;
     float chance = a * 10;
@@ -75,36 +50,67 @@ bool RNGroll(float a){
     return outcome;
 }
 
+
+void petproc(int l){
+    int i;
+    int healmodifier = hero[l].power * 0.072;
+    int healvalue = rand()% healmodifier + 0.324 * hero[l].power;
+    bool critroll = RNGroll(hero[l].critchance);
+    bool petroll = RNGroll(20);
+    if (critroll){
+        healvalue *= hero[l].critdamage;
+    }
+    if (petroll){
+        for (i=0 ; i<5 ; i++){
+            if (hero[i].hp >0){
+                hero[i].hp += healvalue;
+                if (hero[i].hp >= hero[i].maxhp){
+                    hero[i].hp = hero[i].maxhp;
+                }
+            }
+        }
+    }
+}
+
+// Calculates the turn rate of each entity in the fight by taking power and agility.
+float turnRate(int b, int a){
+    float tr = 0;
+    tr = ((a + b)/2);
+    tr = pow(tr, 2);
+    tr = tr/(100*b);
+    return tr;
+}
+
 void heroattack(int k){
     float attackvalue = 0;
     int attackmodifier = 0.2 * hero[k].power;
-    int critroll = rand()%100 +1;
     attackvalue = rand()% attackmodifier + 0.9 * hero[k].power;
-    if (critroll <= hero[k].critchance){
+    bool critroll = RNGroll(hero[k].critchance);
+    if (critroll){
         attackvalue *= hero[k].critdamage;
     }
-    int evaderoll = rand()%1000 + 1;
-    if (evaderoll > 25){
+    bool evaderoll = RNGroll(2.5);
+    if (!evaderoll){
         hpdummy -= attackvalue;
         petproc(k);
     }
 }
 
 void bossattack(int k){
-    int blockroll = 0, evaderoll = 0, deflectroll = 0;
+    bool blockroll, evaderoll, deflectroll;
     float attackvalue= 0 ;
     int attackmodifier = 0.2 * dummypower;
-    int critroll = rand()%100 +1;
     attackvalue = rand()% attackmodifier + 0.9 * dummypower;
-    if (critroll <= 10){
+    bool critroll = RNGroll(10);
+    if (critroll){
         attackvalue *= 1.5;
     }
-    deflectroll = rand()% 1000 + 1;
-    if (deflectroll >= hero[k].deflect){
-        evaderoll = rand()% 1000 + 1;
-        if (evaderoll >= hero[k].evade){
-            blockroll = rand()% 100 + 1;
-            if (blockroll <= hero[k].block){
+    deflectroll = RNGroll(hero[k].deflect);
+    if (!deflectroll){
+        evaderoll = RNGroll(hero[k].evade);
+        if (!evaderoll){
+            blockroll = RNGroll(hero[k].block);
+            if (blockroll){
                 hero[k].hp -= 0.5 * attackvalue;
                 petproc(k);
             } else {hero[k].hp -= attackvalue;
@@ -114,13 +120,10 @@ void bossattack(int k){
     } else {hpdummy -= attackvalue;}
 }
 
-
-
-
 int main() {
     int p;
     float win=0;
-    int lose=0;
+    float lose=0;
     float winrate;
     
     srand((unsigned int)time(NULL));
@@ -169,26 +172,38 @@ int main() {
     hero[2].critdamage = 1.5;
     hero[3].critdamage = 1.5;
     hero[4].critdamage = 1.5;
-    hero[0].DSchance = 2;
-    hero[1].DSchance = 2;
-    hero[2].DSchance = 2;
-    hero[3].DSchance = 2;
-    hero[4].DSchance = 2;
+    hero[0].DSchance = 0;
+    hero[1].DSchance = 12.5;
+    hero[2].DSchance = 12.5;
+    hero[3].DSchance = 12.5;
+    hero[4].DSchance = 0;
     hero[0].block = 40;
     hero[1].block = 0;
     hero[2].block = 0;
     hero[3].block = 0;
     hero[4].block = 40;
-    hero[0].evade = 125;
-    hero[1].evade = 25;
-    hero[2].evade = 25;
-    hero[3].evade = 25;
-    hero[4].evade = 125;
-    hero[0].deflect = 50;
+    hero[0].evade = 12.5;
+    hero[1].evade = 2.5;
+    hero[2].evade = 2.5;
+    hero[3].evade = 2.5;
+    hero[4].evade = 12.5;
+    hero[0].deflect = 5;
     hero[1].deflect = 0;
     hero[2].deflect = 0;
     hero[3].deflect = 0;
-    hero[4].deflect = 50;
+    hero[4].deflect = 5;
+    hero[0].powerrune = 1;
+    hero[1].powerrune = 1;
+    hero[2].powerrune = 1;
+    hero[3].powerrune = 1;
+    hero[4].powerrune = 1;
+    hero[0].agirune = 1;
+    hero[1].agirune = 1;
+    hero[2].agirune = 1;
+    hero[3].agirune = 1;
+    hero[4].agirune = 1;
+
+        
     hpdummy = dummystamina * 10;
     dummytr = turnRate(dummypower, dummyagility);
     dummyinterval = countermax / dummytr;
@@ -202,6 +217,8 @@ int main() {
         //printf("How much agility on hero %d ?\n", i+1);
         //scanf("%d", &hero[i].agility);
         
+        hero[i].power *= hero[i].powerrune;
+        hero[i].agility *= hero[i].agirune;
         hero[i].hp = hero[i].stamina * 10;
         hero[i].maxhp = hero[i].hp;
         hero[i].tr = turnRate(hero[i].power, hero[i].agility);
@@ -261,6 +278,6 @@ int main() {
 
     }
     winrate = (win / 1000) * 100;
-    printf("win = %f lost = %d\n", win, lose);
+    printf("win = %f lost = %f\n", win, lose);
     printf("winrate = %f %%\n", winrate);
 }
