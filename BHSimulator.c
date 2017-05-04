@@ -53,6 +53,7 @@ bool RNGroll(float a){
     return outcome;
 }
 
+// offpetproc runs the code to simulate damaging pets of hero [l]
 void offpetproc( int l){
     int attackmodifier = hero[l].power * 0.54;
     int attackvalue = rand()% attackmodifier + hero[l].power * 0.63;
@@ -69,7 +70,8 @@ void offpetproc( int l){
     
 }
 
-void petproc(int l){
+// defpetproc runs the code to simulate healing pets of hero[l]
+void defpetproc(int l){
     int i;
     int healmodifier = hero[l].power * 0.072;
     int healvalue = rand()% healmodifier + 0.324 * hero[l].power;
@@ -102,6 +104,7 @@ float turnRate(int b, int a){
 }
 
 void heroattack(int k){
+    
     int petcheck;
     petcheck = strcmp(hero[k].pet , "gemmi");
     float attackvalue = 0;
@@ -110,7 +113,7 @@ void heroattack(int k){
     if (hero[k].sp >=2){
         float skillmodifier = (rand()% 50 +110);
         skillmodifier /=100;
-        attackvalue *= skillmodifier;
+        attackvalue = hero[k].power * skillmodifier;
         hero[k].sp -=2;
         
     }
@@ -122,7 +125,7 @@ void heroattack(int k){
     if (!evaderoll){
         hpdummy -= attackvalue;
         if (petcheck==0){
-            petproc(k);
+            defpetproc(k);
         } else {offpetproc(k);}
     }
 }
@@ -152,10 +155,10 @@ void bossattack(int k){
             blockroll = RNGroll(hero[k].block);
             if (blockroll){
                 hero[k].hp -= 0.5 * attackvalue;
-                petproc(k);
+                defpetproc(k);
             } else { hero[k].hp -= attackvalue;
                 if (petcheck==0){
-                    petproc(k);
+                    defpetproc(k);
                 } else {offpetproc(k);}
             }
         }
@@ -170,7 +173,7 @@ int main() {
     
     srand((unsigned int)time(NULL));
     
-    for (p=0 ; p < 100000 ; p++){
+    for (p=0 ; p < 100000 ; p++){  // for loop to simulate as many fights as you want
     dummypower = 1700;
     dummystamina = 3060;
     dummyagility = 680;
@@ -325,7 +328,7 @@ int main() {
     dummyinterval = countermax / dummytr;
     
 
-    for(i=0 ; i<playerNo ; i++){
+    for(i=0 ; i<playerNo ; i++){            //initialises heroes' variables
         //printf("How much power on hero %d ?\n", i+1);
         //scanf("%d", &hero[i].power);
         //printf("How much stamina on hero %d ?\n", i+1);
@@ -343,16 +346,16 @@ int main() {
     }
     
     
-    while (hpdummy>0 && teamalive==true){
+    while (hpdummy>0 && teamalive==true){           //fight will stop if either party is dead
         for(cycle=1 ; cycle<=countermax ; cycle++){
             dummycounter++;
             for(i=0 ; i<playerNo ; i++){
                 hero[i].counter++;
-                if(hero[i].counter >= hero[i].interval && hero[i].hp > 0){
+                if(hero[i].counter >= hero[i].interval && hero[i].hp > 0){      //checks if it's player's turn to attack
                     hero[i].sp ++;
                     petcheck = strcmp(hero[i].pet , "gemmi");
                     if (petcheck==0){
-                        petproc(i);
+                        defpetproc(i);
                     } else {offpetproc(i);}
                     DS = RNGroll(hero[i].DSchance);
                     if (DS){
@@ -370,7 +373,7 @@ int main() {
                     }
                 }
             }
-            if (hpdummy > 0 && dummycounter >= dummyinterval){
+            if (hpdummy > 0 && dummycounter >= dummyinterval){         //checks if it's boss' turn to attack
                 spdummy++;
                 if (hero[0].hp > 0){
                     bossattack(0);
@@ -411,5 +414,6 @@ int main() {
     }
     winrate = (win / 100000) * 100;
     printf("win = %f lost = %f\n", win, lose);
-    printf("winrate = %f %%\n", winrate);
+    printf("winrate = %f %%\n", winrate);         // winrate %. Change winrate denominator to adjust % value.
 }
+
