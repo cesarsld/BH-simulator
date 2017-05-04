@@ -20,6 +20,53 @@
 
 enum pet{ nelson = 0, gemmi = 1};
 
+
+bool bossfight(Hero **party,Enemy *boss, int teamalive, int cycle, int countermax){
+    while (boss->hp > 0 && teamalive == true)
+    {
+        for(cycle = 1; cycle <= countermax; cycle++){
+            boss->counter++;
+            for(int i=0 ; i<HERO_COUNT ; i++){
+                party[i]->counter++;
+                //checks if it's player's turn to attack
+                if(party[i]->counter >= party[i]->interval && party[i]->hp > 0){
+                    party[i]->sp ++;
+                    if (*party[i]->pet == gemmi){
+                        defpetproc(party[i], party);
+                    } else {offpetproc(party[i], boss);}
+                    if (party[i]->DSchance){
+                        heroattack(party[i], party, boss);
+                        heroattack(party[i], party, boss);
+                    } else {heroattack(party[i],party,boss);}
+                    //printf("kal hp = %d\n", boss->hp);}
+                    party[i]->counter -= party[i]->interval;
+                    if (boss->hp<=0){
+                        //printf("You killed the dummy!\n");
+                        i = HERO_COUNT;
+                        cycle = countermax;
+                        return true;
+                    }
+                }
+                //checks if it's boss' turn to attack
+                if (boss->hp > 0 && boss->counter >= boss->interval){
+                    boss->sp++;
+                    for (int j=0; j<HERO_COUNT; j++){
+                        if (party[j]->hp > 0){
+                            bossattack(party[0], party, boss );
+                            boss->counter -= boss->interval;
+                            j=5;
+                        }else {
+                            cycle = countermax;
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
 void func()
 {
     int p;
@@ -48,80 +95,18 @@ void func()
         }
 
         int countermax = 100;
-        int i;
-        int cycle;
-        bool DS;
+        int cycle=0;
         bool teamalive = true;
 
         //fight will stop if either party is dead
-        while (boss->hp > 0 && teamalive == true){
-            for(cycle = 1; cycle <= countermax; cycle++){
-                boss->counter++;
-                for(i=0 ; i<HERO_COUNT ; i++){
-                    party[i]->counter++;
-                    //checks if it's player's turn to attack
-                    if(party[i]->counter >= party[i]->interval && party[i]->hp > 0){
-                        party[i]->sp ++;
-                        if (*party[i]->pet == gemmi){
-                            defpetproc(party[i], party);
-                        } else {offpetproc(party[i], boss);}
-                        DS = RNGroll(party[i]->DSchance);
-                        if (DS){
-                            heroattack(party[i], party, boss);
-                            heroattack(party[i], party, boss);
-                            //printf("kal hp = %d\n", boss->hp);
-                        } else {heroattack(party[i],party,boss);}
-                        //printf("kal hp = %d\n", boss->hp);}
-                        party[i]->counter -= party[i]->interval;
-                        if (boss->hp<=0){
-                            //printf("You killed the dummy!\n");
-                            win++;
-                            i = HERO_COUNT;
-                            cycle = countermax;
-                        }
-                    }
-                }
-                //checks if it's boss' turn to attack
-                if (boss->hp > 0 && boss->counter >= boss->interval){
-                    boss->sp++;
-                    if (party[0]->hp > 0){
-                        bossattack(party[0], party, boss );
-                        boss->counter -= boss->interval;
-                        //printf("hero 0 hp = %d\n", hero[0]->hp);
-                    } else if (party[1]->hp > 0){
-                        bossattack(party[1], party, boss );
-                        boss->counter -= boss->interval;
-                        //printf("hero 1 hp = %d\n", hero[1]->hp);
-
-                    } else if (party[2]->hp > 0){
-                        bossattack(party[2], party, boss );
-                        boss->counter -= boss->interval;
-                        //printf("hero 2 hp = %d\n", hero[2]->hp);
-
-                    } else if (party[3]->hp > 0){
-                        bossattack(party[3], party, boss );
-                        boss->counter -= boss->interval;
-                        //printf("hero 3 hp = %d\n", hero[3]->hp);
-
-                    } else if (party[4]->hp > 0){
-                        bossattack(party[4], party, boss );
-                        boss->counter -= boss->interval;
-                        //printf("hero 4 hp = %d\n", hero[4]->hp);
-
-                    } else {
-                        teamalive = false;
-                        cycle = countermax;
-                    }
-                }
-
-            }
+        teamalive = bossfight(party, boss, teamalive, cycle, countermax);
+        if (!teamalive){
+            lose++;
+        }else{
+            win++;
         }
-    if (!teamalive){
-        lose++;
     }
-
-    }
-    winrate = (win / 100000) * 100;
+    winrate = (win / FIGHTCOUNT) * 100;
     printf("win = %f lost = %f\n", win, lose);
     // winrate %. Change winrate denominator to adjust % value.
     printf("winrate = %f %%\n", winrate);
