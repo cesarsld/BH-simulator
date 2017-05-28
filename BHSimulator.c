@@ -22,6 +22,7 @@ typedef struct {
     int hp;
     int maxhp;
     int sp;
+    float hpPerc;
     float tr;
     float interval;
     float counter;
@@ -34,6 +35,7 @@ typedef struct {
     float powerrune;
     float agirune;
     char pet [10];
+    bool alive;
     
 } Hero;
 Hero hero[5];           // size of array indicated max amount of heroes in team.
@@ -54,7 +56,7 @@ bool RNGroll(float a){
 }
 
 // offpetproc runs the code to simulate damaging pets of hero [l]
-void offpetproc( int l){
+void offpetproc(int l){
     int attackmodifier = hero[l].power * 0.54;
     int attackvalue = rand()% attackmodifier + hero[l].power * 0.63;
     
@@ -103,6 +105,21 @@ float turnRate(int b, int a){
     return tr;
 }
 
+int TargetSelection(){
+    int target = 0;
+    int i = 0;
+    bool targetLocked = false;
+    while (!targetLocked) {
+        if (hero[i].alive){
+            target = i;
+            targetLocked = true;
+        }
+        i++;
+    }
+    
+    return target;
+}
+
 void heroattack(int k){
     
     int petcheck;
@@ -130,21 +147,40 @@ void heroattack(int k){
     }
 }
 
-void bossattack(int k){
+void bossattack(){
+    int k;
+    k = TargetSelection();
+    
     int petcheck;
-    petcheck = strcmp(hero[k].pet , "gemmi");
-    bool blockroll, evaderoll, deflectroll;
-    float attackvalue= 0 ;
+
+    bool blockroll, evaderoll, deflectroll, redirectroll;
+    
+    float attackvalue= 0;
+    
     int attackmodifier = 0.2 * dummypower;
+    
     attackvalue = rand()% attackmodifier + 0.9 * dummypower;
     
     if (spdummy >=2){
-        float skillmodifier = (rand()% 126 +94);
-        skillmodifier /=100;
-        attackvalue *= skillmodifier;
-        spdummy -=2;
+        int skillSelection = rand()% 2;
+        if (skillSelection == 0){
+            float skillmodifier = (rand()% 126 +94);
+            skillmodifier /=100;
+            attackvalue = dummypower*skillmodifier;
+            spdummy -=2;
+        } else {
+            float skillmodifier = (rand()% 126 +94);
+            skillmodifier /=100;
+            attackvalue = dummypower*skillmodifier;
+            spdummy -=2;
+        }
     }
     bool critroll = RNGroll(10);
+    redirectroll = RNGroll(25);
+    if (redirectroll){
+        k = 4;
+    }
+    petcheck = strcmp(hero[k].pet , "gemmi");
     if (critroll){
         attackvalue *= 1.5;
     }
@@ -155,17 +191,64 @@ void bossattack(int k){
             blockroll = RNGroll(hero[k].block);
             if (blockroll){
                 hero[k].hp -= 0.5 * attackvalue;
-                defpetproc(k);
-            } else { hero[k].hp -= attackvalue;
-                if (petcheck==0){
-                    defpetproc(k);
-                } else {offpetproc(k);}
+                if (hero[k].hp <= 0){
+                    hero[k].alive = false;
+                } else {
+                    if (petcheck==0){
+                        defpetproc(k);
+                    } else {offpetproc(k);}
+                }
+            } else {
+                hero[k].hp -= attackvalue;
+                if (hero[k].hp <= 0){
+                    hero[k].alive = false;
+                } else {
+                    if (petcheck==0){
+                        defpetproc(k);
+                    } else {
+                        offpetproc(k);
+                    }
+                }
             }
         }
     } else {hpdummy -= attackvalue;}
 }
 
-int main() {
+int healLogic(){
+    int i;
+    int lowest = 0;
+    
+    for (i=0 ; i<5 ; i++){
+        hero[i].hpPerc = hero[i].hp / hero[i].maxhp;
+    }
+    for (i=0 ; i<4 ; i++){
+        if (hero[i].hpPerc <= hero[i+1].hpPerc){
+            lowest = i;
+        } else { lowest = i+1;}
+    }
+    return lowest;
+}
+
+void spreadHealing(int k){
+    int i;
+    int target=0;
+    int healingvalue = 0;
+    int healingmodifier = 0.365 * hero[k].power;
+    
+    healingvalue = rand()% healingmodifier + 0.73 * hero[k].power;
+    
+    bool critroll = RNGroll(hero[k].critchance);
+    if (critroll){
+        healingvalue *= hero[k].critdamage;
+    }
+    
+    for (i=0 ; i < healingvalue ; i++){
+        target = healLogic();
+        hero[target].hp++;
+    }
+}
+
+int main(){
     int p;
     float win=0;
     float lose=0;
@@ -193,40 +276,40 @@ int main() {
    // printf("How many heroes will you use?\n");
    // scanf("%d", &playerNo);
     playerNo = 5;
-        hero[0].power = 443;
-        hero[1].power = 712;
-        hero[2].power = 702;
-        hero[3].power = 815;
-        hero[4].power = 448;
-        hero[0].stamina = 1034;
-        hero[1].stamina = 205;
-        hero[2].stamina = 200;
-        hero[3].stamina = 167;
-        hero[4].stamina = 875;
+        hero[0].power = 444;
+        hero[1].power = 505;
+        hero[2].power = 615;
+        hero[3].power = 559;
+        hero[4].power = 94;
+        hero[0].stamina = 690;
+        hero[1].stamina = 310;
+        hero[2].stamina = 186;
+        hero[3].stamina = 205;
+        hero[4].stamina = 1004;
         hero[0].agility = 101;
-        hero[1].agility = 705;
-        hero[2].agility = 652;
-        hero[3].agility = 710;
-        hero[4].agility = 216;
+        hero[1].agility = 505;
+        hero[2].agility = 567;
+        hero[3].agility = 555;
+        hero[4].agility = 94;
         hero[0].sp = 0;
         hero[1].sp = 0;
         hero[2].sp = 0;
         hero[3].sp = 0;
         hero[4].sp = 0;
         hero[0].critchance = 10;
-        hero[1].critchance = 20;
-        hero[2].critchance = 20;
+        hero[1].critchance = 25;
+        hero[2].critchance = 25;
         hero[3].critchance = 25;
         hero[4].critchance = 10;
         hero[0].critdamage = 1.5;
-        hero[1].critdamage = 2;
-        hero[2].critdamage = 2;
-        hero[3].critdamage = 1.5;
+        hero[1].critdamage = 1.5;
+        hero[2].critdamage = 1.5;
+        hero[3].critdamage = 2;
         hero[4].critdamage = 1.5;
         hero[0].DSchance = 0;
-        hero[1].DSchance = 12.5;
-        hero[2].DSchance = 12.5;
-        hero[3].DSchance = 12.5;
+        hero[1].DSchance = 2.5;
+        hero[2].DSchance = 7.5;
+        hero[3].DSchance = 5;
         hero[4].DSchance = 0;
         hero[0].block = 40;
         hero[1].block = 0;
@@ -244,20 +327,25 @@ int main() {
         hero[3].deflect = 0;
         hero[4].deflect = 5;
         hero[0].powerrune = 1;
-        hero[1].powerrune = 1;
-        hero[2].powerrune = 1;
-        hero[3].powerrune = 1.15;
+        hero[1].powerrune = 1.15;
+        hero[2].powerrune = 1.2;
+        hero[3].powerrune = 1.05;
         hero[4].powerrune = 1;
         hero[0].agirune = 1;
-        hero[1].agirune = 1;
+        hero[1].agirune = 1.025;
         hero[2].agirune = 1;
-        hero[3].agirune = 1;
+        hero[3].agirune = 1.025;
         hero[4].agirune = 1;
         strcpy (hero[0].pet, "nelson");
         strcpy (hero[1].pet, "gemmi");
-        strcpy (hero[2].pet, "gemmi");
+        strcpy (hero[2].pet, "nelson");
         strcpy (hero[3].pet, "nelson");
         strcpy (hero[4].pet, "gemmi");
+        hero[0].alive = true;
+        hero[1].alive = true;
+        hero[2].alive = true;
+        hero[3].alive = true;
+        hero[4].alive = true;
 
         
         /*hero[0].power = 443;
@@ -351,7 +439,7 @@ int main() {
             dummycounter++;
             for(i=0 ; i<playerNo ; i++){
                 hero[i].counter++;
-                if(hero[i].counter >= hero[i].interval && hero[i].hp > 0){      //checks if it's player's turn to attack
+                if(hero[i].counter >= hero[i].interval && hero[i].alive){      //checks if it's player's turn to attack
                     hero[i].sp ++;
                     petcheck = strcmp(hero[i].pet , "gemmi");
                     if (petcheck==0){
@@ -375,7 +463,13 @@ int main() {
             }
             if (hpdummy > 0 && dummycounter >= dummyinterval){         //checks if it's boss' turn to attack
                 spdummy++;
-                if (hero[0].hp > 0){
+                bossattack();
+                dummycounter -= dummyinterval;
+                if (!hero[0].alive && !hero[1].alive && !hero[2].alive && !hero[3].alive && !hero[4].alive){
+                    teamalive = false;
+                    cycle = countermax;
+                }
+                /*if (hero[0].hp > 0){
                     bossattack(0);
                     dummycounter -= dummyinterval;
                     //printf("hero 0 hp = %d\n", hero[0].hp);
@@ -402,7 +496,7 @@ int main() {
                 } else {
                     teamalive = false;
                     cycle = countermax;
-                }
+                }*/
             }
             
         }
