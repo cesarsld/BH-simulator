@@ -414,13 +414,11 @@ void spreadHealing(int k){
     }
 }
 
-int main(){
+void simulation(){
     int p;
     float win=0;
     float lose=0;
     float winrate;
-    
-    srand((unsigned int)time(NULL));
     
     for (p=0 ; p < 100000 ; p++){  // for loop to simulate as many fights as you want
     dummypower = 1700;
@@ -443,27 +441,27 @@ int main(){
    // scanf("%d", &playerNo);
     playerNo = 5;
         hero[0].power = 444;
-        hero[1].power = 505;
+        hero[1].power = 515;
         hero[2].power = 615;
         hero[3].power = 559;
-        hero[4].power = 94;
-        hero[0].stamina = 690;
-        hero[1].stamina = 310;
+        hero[4].power = 100;
+        hero[0].stamina = 692;
+        hero[1].stamina = 185;
         hero[2].stamina = 186;
         hero[3].stamina = 205;
-        hero[4].stamina = 1004;
+        hero[4].stamina = 1010;
         hero[0].agility = 101;
-        hero[1].agility = 505;
+        hero[1].agility = 515;
         hero[2].agility = 567;
         hero[3].agility = 555;
-        hero[4].agility = 94;
+        hero[4].agility = 100;
         hero[0].sp = 4;
         hero[1].sp = 4;
         hero[2].sp = 4;
         hero[3].sp = 4;
         hero[4].sp = 4;
         hero[0].critchance = 10;
-        hero[1].critchance = 25;
+        hero[1].critchance = 15;
         hero[2].critchance = 25;
         hero[3].critchance = 25;
         hero[4].critchance = 10;
@@ -473,16 +471,16 @@ int main(){
         hero[3].critdamage = 2;
         hero[4].critdamage = 1.5;
         hero[0].DSchance = 0;
-        hero[1].DSchance = 2.5;
+        hero[1].DSchance = 19.5;
         hero[2].DSchance = 7.5;
         hero[3].DSchance = 5;
         hero[4].DSchance = 0;
-        hero[0].block = 40;
+        hero[0].block = 30;
         hero[1].block = 0;
         hero[2].block = 0;
         hero[3].block = 0;
         hero[4].block = 40;
-        hero[0].evade = 12.5;
+        hero[0].evade = 14;
         hero[1].evade = 2.5;
         hero[2].evade = 2.5;
         hero[3].evade = 2.5;
@@ -493,20 +491,28 @@ int main(){
         hero[3].deflect = 0;
         hero[4].deflect = 5;
         hero[0].powerrune = 1;
-        hero[1].powerrune = 1.15;
+        hero[1].powerrune = 1.125;
         hero[2].powerrune = 1.2;
         hero[3].powerrune = 1.05;
         hero[4].powerrune = 1;
         hero[0].agirune = 1;
-        hero[1].agirune = 1.025;
+        hero[1].agirune = 1;
         hero[2].agirune = 1;
         hero[3].agirune = 1.025;
         hero[4].agirune = 1;
+        /*
         strcpy_s (hero[0].pet, 10, "nelson");
         strcpy_s (hero[1].pet, 10, "gemmi");
         strcpy_s (hero[2].pet, 10, "nelson");
         strcpy_s (hero[3].pet, 10, "nelson");
         strcpy_s (hero[4].pet, 10, "gemmi");
+
+         */
+        strcpy (hero[0].pet, "nelson");
+        strcpy (hero[1].pet, "gemmi");
+        strcpy (hero[2].pet, "nelson");
+        strcpy (hero[3].pet, "nelson");
+        strcpy (hero[4].pet, "gemmi");
         hero[0].alive = true;
         hero[1].alive = true;
         hero[2].alive = true;
@@ -676,6 +682,75 @@ int main(){
     printf("win = %f lost = %f\n", win, lose);
     printf("winrate = %f %%\n", winrate);         // winrate %. Change winrate denominator to adjust % value.
 
-	getchar();
+	//getchar();
 }
 
+void dummyfight() {
+    float power = 1000, stamina = 100, agility = 100, crit = 10, countermax = 100;
+    float tr, critdmg = 1, ds = 0, interval ,counter = 0, prune = 1, arune = 1, critattack;
+    power *= prune;
+    stamina = 100;
+    agility *= arune;
+    critattack = power * critdmg;
+
+    tr = turnRate(power, agility);
+    interval = countermax / tr;
+    bool critroll, dsroll;
+    long i;
+    int cycle, hitdone = 0, normalhit=0, crithit =0;
+    long long damagedone=0;
+    for (i=0;i<1000000;i++){
+        for (cycle = 0 ; cycle <100 ; cycle++){
+            counter++;
+            if (counter >= interval){
+                hitdone++;
+                dsroll = RNGroll(ds);
+                if(dsroll){
+                    critroll = RNGroll(crit);
+                    if(critroll){
+                        damagedone += critattack;
+                        crithit++;
+                    } else {
+                        damagedone += power;
+                        normalhit++;
+                    }
+                    critroll = RNGroll(crit);
+                    if(critroll){
+                        damagedone += critattack;
+                        crithit++;
+                    } else {
+                        damagedone += power;
+                        normalhit++;
+                    }
+                }
+                critroll = RNGroll(crit);
+                if(critroll){
+                    damagedone += critattack;
+                    crithit++;
+                } else {
+                    damagedone += power;
+                    normalhit++;
+                }
+                counter -=interval;
+                
+            }
+        }
+    }
+    long long dps;
+    dps = damagedone / i;
+    printf("damage = %lld\n", damagedone);
+    //printf("hits = %d\n", hitdone);
+    //printf("normal hits = %d\n", normalhit);
+   // printf(" crithits = %d\n", crithit);
+ //   printf("dps = %lld\n", dps);
+    
+}
+
+int main(){
+    srand((unsigned int)time(NULL));
+    //simulation();
+    int i;
+    for (i=0; i<5;i++){
+        dummyfight();
+    }
+}
