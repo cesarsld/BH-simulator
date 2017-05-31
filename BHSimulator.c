@@ -500,19 +500,19 @@ void simulation(){
         hero[2].agirune = 1;
         hero[3].agirune = 1.025;
         hero[4].agirune = 1;
-        /*
+        
         strcpy_s (hero[0].pet, 10, "nelson");
         strcpy_s (hero[1].pet, 10, "gemmi");
         strcpy_s (hero[2].pet, 10, "nelson");
         strcpy_s (hero[3].pet, 10, "nelson");
         strcpy_s (hero[4].pet, 10, "gemmi");
-
-         */
+/*
+         
         strcpy (hero[0].pet, "nelson");
         strcpy (hero[1].pet, "gemmi");
         strcpy (hero[2].pet, "nelson");
         strcpy (hero[3].pet, "nelson");
-        strcpy (hero[4].pet, "gemmi");
+        strcpy (hero[4].pet, "gemmi");*/
         hero[0].alive = true;
         hero[1].alive = true;
         hero[2].alive = true;
@@ -686,8 +686,8 @@ void simulation(){
 }
 
 void dummyfight() {
-    float power = 1000, stamina = 100, agility = 100, crit = 10, countermax = 100;
-    float tr, critdmg = 1, ds = 0, interval ,counter = 0, prune = 1, arune = 1, critattack;
+    long long power = 500, stamina = 100, agility = 500, crit = 10, countermax = 100;
+    double tr, critdmg = 1.5, ds = 0, interval ,counter = 0, prune = 1.1, arune = 1, critattack;
     power *= prune;
     stamina = 100;
     agility *= arune;
@@ -697,9 +697,9 @@ void dummyfight() {
     interval = countermax / tr;
     bool critroll, dsroll;
     long i;
-    int cycle, hitdone = 0, normalhit=0, crithit =0;
+    long long cycle, hitdone = 0, normalhit=0, crithit =0;
     long long damagedone=0;
-    for (i=0;i<1000000;i++){
+    for (i=0;i<100000;i++){
         for (cycle = 0 ; cycle <100 ; cycle++){
             counter++;
             if (counter >= interval){
@@ -739,10 +739,10 @@ void dummyfight() {
     long long dps;
     dps = damagedone / i;
     printf("damage = %lld\n", damagedone);
-    //printf("hits = %d\n", hitdone);
-    //printf("normal hits = %d\n", normalhit);
-   // printf(" crithits = %d\n", crithit);
- //   printf("dps = %lld\n", dps);
+    printf("hits = %d\n", hitdone);
+    printf("normal hits = %d\n", normalhit);
+    printf(" crithits = %d\n", crithit);
+    printf("dps = %lld\n", dps);
     
 }
 
@@ -750,7 +750,8 @@ int main(){
     srand((unsigned int)time(NULL));
     //simulation();
     int i;
-    for (i=0; i<5;i++){
+    for (i=0; i<1;i++){
         dummyfight();
     }
+	getchar();
 }
