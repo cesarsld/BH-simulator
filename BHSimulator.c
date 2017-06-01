@@ -12,10 +12,12 @@
 #include <math.h>
 #include <stdbool.h>
 #include <string.h>
+#include "heroSetup.h"
+#include "BHSimulator.h"
 
 
                         //struct will contain all stats and informations on hero. Will update its content when code gets more complex.
-typedef struct {
+/*typedef struct {
     int power;
     int stamina;
     int agility;
@@ -36,9 +38,10 @@ typedef struct {
     float agirune;
     char pet [10];
     bool alive;
-    
+ 
 } Hero;
-Hero hero[5];           // size of array indicated max amount of heroes in team.
+Hero hero[5];  */         // size of array indicated max amount of heroes in team.
+Hero hero[5];
 
 int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy, spdummy=0;
 
@@ -440,7 +443,17 @@ void simulation(){
    // printf("How many heroes will you use?\n");
    // scanf("%d", &playerNo);
     playerNo = 5;
-        hero[0].power = 440;
+        
+        encon(0);
+        encon(1);
+        encon(2);
+        encon(3);
+        encon(4);
+        
+    
+        
+        
+        /*hero[0].power = 440;
         hero[1].power = 580;
         hero[2].power = 930;
         hero[3].power = 568;
@@ -499,7 +512,7 @@ void simulation(){
         hero[1].agirune = 1;
         hero[2].agirune = 1;
         hero[3].agirune = 1.025;
-        hero[4].agirune = 1;
+        hero[4].agirune = 1;*/
         /*
         strcpy_s (hero[0].pet, 10, "nelson");
         strcpy_s (hero[1].pet, 10, "gemmi");
@@ -508,7 +521,7 @@ void simulation(){
         strcpy_s (hero[4].pet, 10, "gemmi");
 */
          
-        strcpy (hero[0].pet, "nelson");
+        /*strcpy (hero[0].pet, "nelson");
         strcpy (hero[1].pet, "gemmi");
         strcpy (hero[2].pet, "nelson");
         strcpy (hero[3].pet, "nelson");
@@ -517,7 +530,7 @@ void simulation(){
         hero[1].alive = true;
         hero[2].alive = true;
         hero[3].alive = true;
-        hero[4].alive = true;
+        hero[4].alive = true;*/
 
         
     hpdummy = dummystamina * 10;
@@ -623,8 +636,8 @@ void simulation(){
 }
 
 void dummyFight() {
-    long power = 1100, stamina = 100, agility = 100, crit = 10, countermax = 100;
-    double critdmg = 1, ds = 25, interval ,counter = 0, prune = 1, arune = 1, critattack;
+    long power = 100, stamina = 100, agility = 1100, crit = 0, countermax = 100;
+    double critdmg = 1, ds = 0, interval ,counter = 0, prune = 1, arune = 1.25, critattack;
     float tr;
     power *= prune;
     stamina = 100;
@@ -699,15 +712,15 @@ void BHungerGames(){
     //
     
     char a[] = "Angery";
-    char b[] = "Downee";
-    char c[] = "Dlowden";
-    char d[] = "Vamboge";
+    char b[] = "BrandC";
+    char c[] = "BenRichter";
+    char d[] = "Voodoobear";
     char e[] = "Shzp";
-    char f[] = "Chax";
-    char g[] = "ShadeCan";
-    char h[] = "Megaralph";
-    char i[] = "Moonlight";
-    char j[] = "nikitheve";
+    char f[] = "shinici";
+    char g[] = "Tajier";
+    char h[] = "souji";
+    char i[] = "jeditony";
+    char j[] = "pettirosso";
     
     float Contender1 = 5;
     float Contender2 = 5;
@@ -761,9 +774,10 @@ int main(){
     srand((unsigned int)time(NULL));
     int i;
     for (i=0; i<1;i++){
-     //   dummyFight();
+        //dummyFight();
         simulation();
+        //BHungerGames();
     }
-
-
+    //int a = test(2, 3);
+    //printf("%d", a);
 }
