@@ -109,7 +109,7 @@ void defpetproc(int l){
 }
 
 // Calculates the turn rate of each entity in the fight by taking power and agility.
-float turnRate(int b, int a){
+float turnRate(long b, long a){
     float tr = 0;
     tr = ((a + b)/2);
     tr = pow(tr, 2);
@@ -440,10 +440,10 @@ void simulation(){
    // printf("How many heroes will you use?\n");
    // scanf("%d", &playerNo);
     playerNo = 5;
-        hero[0].power = 444;
-        hero[1].power = 515;
-        hero[2].power = 615;
-        hero[3].power = 559;
+        hero[0].power = 440;
+        hero[1].power = 580;
+        hero[2].power = 930;
+        hero[3].power = 568;
         hero[4].power = 100;
         hero[0].stamina = 692;
         hero[1].stamina = 185;
@@ -451,8 +451,8 @@ void simulation(){
         hero[3].stamina = 205;
         hero[4].stamina = 1010;
         hero[0].agility = 101;
-        hero[1].agility = 515;
-        hero[2].agility = 567;
+        hero[1].agility = 450;
+        hero[2].agility = 240;
         hero[3].agility = 555;
         hero[4].agility = 100;
         hero[0].sp = 4;
@@ -471,7 +471,7 @@ void simulation(){
         hero[3].critdamage = 2;
         hero[4].critdamage = 1.5;
         hero[0].DSchance = 0;
-        hero[1].DSchance = 19.5;
+        hero[1].DSchance = 15;
         hero[2].DSchance = 7.5;
         hero[3].DSchance = 5;
         hero[4].DSchance = 0;
@@ -491,7 +491,7 @@ void simulation(){
         hero[3].deflect = 0;
         hero[4].deflect = 5;
         hero[0].powerrune = 1;
-        hero[1].powerrune = 1.125;
+        hero[1].powerrune = 1.175;
         hero[2].powerrune = 1.2;
         hero[3].powerrune = 1.05;
         hero[4].powerrune = 1;
@@ -500,87 +500,24 @@ void simulation(){
         hero[2].agirune = 1;
         hero[3].agirune = 1.025;
         hero[4].agirune = 1;
-        
+        /*
         strcpy_s (hero[0].pet, 10, "nelson");
         strcpy_s (hero[1].pet, 10, "gemmi");
         strcpy_s (hero[2].pet, 10, "nelson");
         strcpy_s (hero[3].pet, 10, "nelson");
         strcpy_s (hero[4].pet, 10, "gemmi");
-/*
+*/
          
         strcpy (hero[0].pet, "nelson");
         strcpy (hero[1].pet, "gemmi");
         strcpy (hero[2].pet, "nelson");
         strcpy (hero[3].pet, "nelson");
-        strcpy (hero[4].pet, "gemmi");*/
+        strcpy (hero[4].pet, "gemmi");
         hero[0].alive = true;
         hero[1].alive = true;
         hero[2].alive = true;
         hero[3].alive = true;
         hero[4].alive = true;
-
-        
-        /*hero[0].power = 443;
-        hero[1].power = 512;
-        hero[2].power = 502;
-        hero[3].power = 615;
-        hero[4].power = 448;
-        hero[0].stamina = 684;
-        hero[1].stamina = 205;
-        hero[2].stamina = 200;
-        hero[3].stamina = 167;
-        hero[4].stamina = 525;
-        hero[0].agility = 101;
-        hero[1].agility = 555;
-        hero[2].agility = 502;
-        hero[3].agility = 560;
-        hero[4].agility = 216;
-        hero[0].sp = 0;
-        hero[1].sp = 0;
-        hero[2].sp = 0;
-        hero[3].sp = 0;
-        hero[4].sp = 0;
-        hero[0].critchance = 10;
-        hero[1].critchance = 25;
-        hero[2].critchance = 25;
-        hero[3].critchance = 25;
-        hero[4].critchance = 10;
-        hero[0].critdamage = 1.5;
-        hero[1].critdamage = 1.5;
-        hero[2].critdamage = 1.5;
-        hero[3].critdamage = 1.5;
-        hero[4].critdamage = 1.5;
-        hero[0].DSchance = 0;
-        hero[1].DSchance = 12.5;
-        hero[2].DSchance = 12.5;
-        hero[3].DSchance = 12.5;
-        hero[4].DSchance = 0;
-        hero[0].block = 40;
-        hero[1].block = 0;
-        hero[2].block = 0;
-        hero[3].block = 0;
-        hero[4].block = 40;
-        hero[0].evade = 12.5;
-        hero[1].evade = 2.5;
-        hero[2].evade = 2.5;
-        hero[3].evade = 2.5;
-        hero[4].evade = 12.5;
-        hero[0].deflect = 5;
-        hero[1].deflect = 0;
-        hero[2].deflect = 0;
-        hero[3].deflect = 0;
-        hero[4].deflect = 5;
-        hero[0].powerrune = 1;
-        hero[1].powerrune = 1.15;
-        hero[2].powerrune = 1.15;
-        hero[3].powerrune = 1.15;
-        hero[4].powerrune = 1.15;
-        hero[0].agirune = 1;
-        hero[1].agirune = 1;
-        hero[2].agirune = 1;
-        hero[3].agirune = 1;
-        hero[4].agirune = 1;*/
-
 
         
     hpdummy = dummystamina * 10;
@@ -685,9 +622,10 @@ void simulation(){
 	//getchar();
 }
 
-void dummyfight() {
-    long long power = 500, stamina = 100, agility = 500, crit = 10, countermax = 100;
-    double tr, critdmg = 1.5, ds = 0, interval ,counter = 0, prune = 1.1, arune = 1, critattack;
+void dummyFight() {
+    long power = 1100, stamina = 100, agility = 100, crit = 10, countermax = 100;
+    double critdmg = 1, ds = 25, interval ,counter = 0, prune = 1, arune = 1, critattack;
+    float tr;
     power *= prune;
     stamina = 100;
     agility *= arune;
@@ -699,12 +637,13 @@ void dummyfight() {
     long i;
     long long cycle, hitdone = 0, normalhit=0, crithit =0;
     long long damagedone=0;
-    for (i=0;i<100000;i++){
+    for (i=0;i<1000000;i++){
         for (cycle = 0 ; cycle <100 ; cycle++){
             counter++;
             if (counter >= interval){
                 hitdone++;
                 dsroll = RNGroll(ds);
+                
                 if(dsroll){
                     critroll = RNGroll(crit);
                     if(critroll){
@@ -723,14 +662,17 @@ void dummyfight() {
                         normalhit++;
                     }
                 }
-                critroll = RNGroll(crit);
-                if(critroll){
-                    damagedone += critattack;
-                    crithit++;
-                } else {
+                else {
+                    critroll = RNGroll(crit);
+                    if(critroll){
+                        damagedone += critattack;
+                        crithit++;
+                    } else {
                     damagedone += power;
                     normalhit++;
+                    }
                 }
+                
                 counter -=interval;
                 
             }
@@ -739,19 +681,89 @@ void dummyfight() {
     long long dps;
     dps = damagedone / i;
     printf("damage = %lld\n", damagedone);
-    printf("hits = %d\n", hitdone);
-    printf("normal hits = %d\n", normalhit);
-    printf(" crithits = %d\n", crithit);
+    printf("hits = %lld\n", hitdone);
+    printf("normal hits = %lld\n", normalhit);
+    printf(" crithits = %lld\n", crithit);
     printf("dps = %lld\n", dps);
     
 }
 
+/*srand((unsigned int)time(NULL));
+ //simulation();
+ int i;
+ for (i=0; i<1;i++){
+ dummyfight();
+ }
+	//getchar();*/
+void BHungerGames(){
+    //
+    
+    char a[] = "Angery";
+    char b[] = "Downee";
+    char c[] = "Dlowden";
+    char d[] = "Vamboge";
+    char e[] = "Shzp";
+    char f[] = "Chax";
+    char g[] = "ShadeCan";
+    char h[] = "Megaralph";
+    char i[] = "Moonlight";
+    char j[] = "nikitheve";
+    
+    float Contender1 = 5;
+    float Contender2 = 5;
+    float Contender3 = 5;
+    float Contender4 = 5;
+    float Contender5 = 5;
+    float Contender6 = 5;
+    float Contender7 = 5;
+    float Contender8 = 5;
+    float Contender9 = 5;
+    float Contender10 = 5;
+    bool Contender1Result, Contender2Result, Contender3Result, Contender4Result, Contender5Result;
+    bool Contender6Result, Contender7Result, Contender8Result, Contender9Result, Contender10Result;
+    
+    Contender1Result= RNGroll(Contender1);
+    Contender2Result= RNGroll(Contender2);
+    Contender3Result= RNGroll(Contender3);
+    Contender4Result= RNGroll(Contender4);
+    Contender5Result= RNGroll(Contender5);
+    Contender6Result= RNGroll(Contender6);
+    Contender7Result= RNGroll(Contender7);
+    Contender8Result= RNGroll(Contender8);
+    Contender9Result= RNGroll(Contender9);
+    Contender10Result= RNGroll(Contender10);
+    
+    printf("Will I add %s to my fl? %s\n", a, Contender1Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", b, Contender2Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", c, Contender3Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", d, Contender4Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", e, Contender5Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", f, Contender6Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", g, Contender7Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", h, Contender8Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", i, Contender9Result ? "true" : "false");
+    printf("Will I add %s to my fl? %s\n", j, Contender10Result ? "true" : "false");
+
+    
+    /*
+     Hello Bit Heroes!
+     Welcome to the 8th BHungerGames!
+     I come to you as I can offer something you greatly want.... A place in my friendlist... You read right! 
+     I will give a friend slot to one of you..... IF you manage to outclass the other contenders... 
+     You will be placed in an arena.. an RNG arena. Each contestant has 5% of chance to succeed....
+     I will take **10 contestants**. Who dares come forward?
+     May the odds be ever in your favour.
+     
+     */
+}
+
 int main(){
     srand((unsigned int)time(NULL));
-    //simulation();
     int i;
     for (i=0; i<1;i++){
-        dummyfight();
+     //   dummyFight();
+        simulation();
     }
-	getchar();
+
+
 }
