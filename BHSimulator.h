@@ -6,16 +6,14 @@
 //  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
 //
 
-//#ifndef BHSimulator_h
-//#define BHSimulator_h
+#ifndef BHSimulator_h
+#define BHSimulator_h
 
-//#include <stdio.h>
-
-//#endif /* BHSimulator_h */
 #include <stdbool.h>
 #pragma once
+struct HeroStruct;
 
-typedef struct {
+typedef struct HeroStruct {
     int power;
     int stamina;
     int agility;
@@ -36,7 +34,13 @@ typedef struct {
     float agirune;
     char pet [10];
     bool alive;
+    char name [20];
     
 } Hero;
+//Hero hero[5];
+
+
+#endif /* BHSimulator_h */
+
 
 

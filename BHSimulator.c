@@ -12,7 +12,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include <string.h>
-#include "heroSetup.h"
+#include "dataBase.h"
 #include "BHSimulator.h"
 
 
@@ -39,9 +39,9 @@
     char pet [10];
     bool alive;
  
-} Hero;
-Hero hero[5];  */         // size of array indicated max amount of heroes in team.
-Hero hero[5];
+} Hero;*/
+Hero hero[5];           // size of array indicated max amount of heroes in team.
+
 
 int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy, spdummy=0;
 
@@ -444,14 +444,11 @@ void simulation(){
    // scanf("%d", &playerNo);
     playerNo = 5;
         
-        encon(0);
-        encon(1);
-        encon(2);
-        encon(3);
-        encon(4);
-        
-    
-        
+        byleth(0);
+        byleth(1);
+        byleth(2);
+        byleth(3);
+        byleth(4);
         
         /*hero[0].power = 440;
         hero[1].power = 580;
@@ -512,16 +509,16 @@ void simulation(){
         hero[1].agirune = 1;
         hero[2].agirune = 1;
         hero[3].agirune = 1.025;
-        hero[4].agirune = 1;*/
-        /*
-        strcpy_s (hero[0].pet, 10, "nelson");
-        strcpy_s (hero[1].pet, 10, "gemmi");
-        strcpy_s (hero[2].pet, 10, "nelson");
-        strcpy_s (hero[3].pet, 10, "nelson");
-        strcpy_s (hero[4].pet, 10, "gemmi");
-*/
+        hero[4].agirune = 1;
+        
+        //strcpy_s (hero[0].pet, 10, "nelson");
+        //strcpy_s (hero[1].pet, 10, "gemmi");
+        //strcpy_s (hero[2].pet, 10, "nelson");
+        //strcpy_s (hero[3].pet, 10, "nelson");
+        //strcpy_s (hero[4].pet, 10, "gemmi");
+
          
-        /*strcpy (hero[0].pet, "nelson");
+        strcpy (hero[0].pet, "nelson");
         strcpy (hero[1].pet, "gemmi");
         strcpy (hero[2].pet, "nelson");
         strcpy (hero[3].pet, "nelson");
@@ -629,7 +626,7 @@ void simulation(){
 
     }
     winrate = (win / 100000) * 100;
-    printf("win = %f lost = %f\n", win, lose);
+    printf("won = %f lost = %f\n", win, lose);
     printf("winrate = %f %%\n", winrate);         // winrate %. Change winrate denominator to adjust % value.
 
 	//getchar();
@@ -701,13 +698,6 @@ void dummyFight() {
     
 }
 
-/*srand((unsigned int)time(NULL));
- //simulation();
- int i;
- for (i=0; i<1;i++){
- dummyfight();
- }
-	//getchar();*/
 void BHungerGames(){
     //
     

@@ -6,12 +6,13 @@
 //  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
 //
 #include <stdbool.h>
-#include "BHSimulator.h"
 #pragma once
 
-
-
-
-
-void encon(int i);
-int test(int a, int b);
+void encon (int i);
+void hai (int i);
+void xionix (int);
+void rikkiG (int i);
+void iamJosh (int i);
+void byleth (int i);
+void casper (int i);
+void shadown (int i);
