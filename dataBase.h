@@ -16,3 +16,6 @@ void iamJosh (int i);
 void byleth (int i);
 void casper (int i);
 void shadown (int i);
+void souji (int i);
+void borealis (int i);
+void steelfrag (int i);

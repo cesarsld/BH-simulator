@@ -16,30 +16,6 @@
 #include "BHSimulator.h"
 
 
-                        //struct will contain all stats and informations on hero. Will update its content when code gets more complex.
-/*typedef struct {
-    int power;
-    int stamina;
-    int agility;
-    int hp;
-    int maxhp;
-    int sp;
-    float hpPerc;
-    float tr;
-    float interval;
-    float counter;
-    int critchance;
-    int DSchance;
-    float critdamage;
-    int block;
-    int evade;
-    int deflect;
-    float powerrune;
-    float agirune;
-    char pet [10];
-    bool alive;
- 
-} Hero;*/
 Hero hero[5];           // size of array indicated max amount of heroes in team.
 
 
@@ -47,8 +23,7 @@ int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy, spdummy
 
 // RNGroll serves as flag to say if roll is succesful (returns true) or not (returns false). Rolls on 1000 so that decimal aren't lost.
 
-int rftoi(float valueToConvert)
-{
+int rftoi(float valueToConvert){
 	int intValueToConvert = (int)valueToConvert;
 	valueToConvert -= intValueToConvert;
 	if (valueToConvert >= 0.5) {
@@ -324,26 +299,6 @@ void bossattack(){
 
     bool blockroll, evaderoll, deflectroll, redirectroll;
     
-    
-    
-    //int attackmodifier = 0.2 * dummypower;
-    
-    //attackvalue = rand()% attackmodifier + 0.9 * dummypower;
-    
-    /*if (spdummy >=2){
-        int skillSelection = rand()% 2;
-        if (skillSelection == 0){
-            float skillmodifier = (rand()% 126 +94);
-            skillmodifier /=100;
-            attackvalue = dummypower*skillmodifier;
-            spdummy -=2;
-        } else {
-            float skillmodifier = (rand()% 126 +94);
-            skillmodifier /=100;
-            attackvalue = dummypower*skillmodifier;
-            spdummy -=2;
-        }
-    }*/
     bool critroll = RNGroll(10);
     redirectroll = RNGroll(25);
     if (redirectroll){
@@ -698,65 +653,148 @@ void dummyFight() {
     
 }
 
+void Scenarios(char name[20], char nameA[20], char nameB[20], int player){
+    int a = rand() % 5;
+    if (a ==0 && player > 2){
+        printf ("%s made an alliance with %s to kill %s. But %s shouldn't have trusted %s... %s has killed %s.\n" ,name, nameA, nameB, name, nameA, nameA, name);
+    } else if (a==1){
+        printf("%s stepped on a mine. What a shame.\n", name);
+    } else if (a==2){
+        printf("%s is extremely hungry. He hasn't eaten for days. He sees %s eating some berries in the forest but %s drops dead. ''I wonder what human flesh tastes like!'' tells %s to himself.\n", nameA, name, name, nameA);
+    } else if (a==3){
+        printf("%s got mauled by genetically modified Korgz.\n", name);
+    } else if (a==4){
+        printf("%s died of a wound infection inflicted by %s whilst fighting for some ressources.\n", name, nameA);
+    } else if (a==5) {
+        printf ("A giant rock fell on %s's head... But how?\n", name);
+    } else if (a==6){
+        printf ("It's a miracle! %s escaped from the deadly Nosdoodoo! Oh wait! Never mind, %s just got eaten by Blubber...\n", name ,name);
+    }
+}
+
 void BHungerGames(){
     //
     
-    char a[] = "Angery";
-    char b[] = "BrandC";
-    char c[] = "BenRichter";
-    char d[] = "Voodoobear";
-    char e[] = "Shzp";
-    char f[] = "shinici";
-    char g[] = "Tajier";
-    char h[] = "souji";
-    char i[] = "jeditony";
-    char j[] = "pettirosso";
+    typedef struct BHG {
+        char name[20];
+        float chance;
+        bool result;
+        bool alive;
+    } Contestants;
     
-    float Contender1 = 5;
-    float Contender2 = 5;
-    float Contender3 = 5;
-    float Contender4 = 5;
-    float Contender5 = 5;
-    float Contender6 = 5;
-    float Contender7 = 5;
-    float Contender8 = 5;
-    float Contender9 = 5;
-    float Contender10 = 5;
-    bool Contender1Result, Contender2Result, Contender3Result, Contender4Result, Contender5Result;
-    bool Contender6Result, Contender7Result, Contender8Result, Contender9Result, Contender10Result;
+    Contestants contestants[15];
     
-    Contender1Result= RNGroll(Contender1);
-    Contender2Result= RNGroll(Contender2);
-    Contender3Result= RNGroll(Contender3);
-    Contender4Result= RNGroll(Contender4);
-    Contender5Result= RNGroll(Contender5);
-    Contender6Result= RNGroll(Contender6);
-    Contender7Result= RNGroll(Contender7);
-    Contender8Result= RNGroll(Contender8);
-    Contender9Result= RNGroll(Contender9);
-    Contender10Result= RNGroll(Contender10);
+    strcpy(contestants[0].name, "Hai");
+    strcpy(contestants[1].name, "Trakomo");
+    strcpy(contestants[2].name, "Yozu");
+    strcpy(contestants[3].name, "Remmark");
+    strcpy(contestants[4].name, "Taphos");
+    strcpy(contestants[5].name, "Smiley");
+    strcpy(contestants[6].name, "Yamanba");
+    strcpy(contestants[7].name, "Murtida");
+    strcpy(contestants[8].name, "Angery");
+    strcpy(contestants[9].name, "Lagenda");
+    strcpy(contestants[10].name, "Herkk");
+    strcpy(contestants[11].name, "Broxy");
+    strcpy(contestants[12].name, "Phear");
+    strcpy(contestants[13].name, "Miskat");
+    strcpy(contestants[14].name, "Brandc");
+
     
-    printf("Will I add %s to my fl? %s\n", a, Contender1Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", b, Contender2Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", c, Contender3Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", d, Contender4Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", e, Contender5Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", f, Contender6Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", g, Contender7Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", h, Contender8Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", i, Contender9Result ? "true" : "false");
-    printf("Will I add %s to my fl? %s\n", j, Contender10Result ? "true" : "false");
+    
+    contestants[0].chance = 90;
+    contestants[1].chance = 90;
+    contestants[2].chance = 90;
+    contestants[3].chance = 90;
+    contestants[4].chance = 90;
+    contestants[5].chance = 90;
+    contestants[6].chance = 90;
+    contestants[7].chance = 90;
+    contestants[8].chance = 90;
+    contestants[9].chance = 90;
+    contestants[10].chance = 90;
+    contestants[11].chance = 90;
+    contestants[12].chance = 90;
+    contestants[13].chance = 90;
+    contestants[14].chance = 90;
+    
+    contestants[0].alive = true;
+    contestants[1].alive = true;
+    contestants[2].alive = true;
+    contestants[3].alive = true;
+    contestants[4].alive = true;
+    contestants[5].alive = true;
+    contestants[6].alive = true;
+    contestants[7].alive = true;
+    contestants[8].alive = true;
+    contestants[9].alive = true;
+    contestants[10].alive = true;
+    contestants[11].alive = true;
+    contestants[12].alive = true;
+    contestants[13].alive = true;
+    contestants[14].alive = true;
+
+    
+    contestants[0].alive = false;
+    contestants[1].alive = false;
+    contestants[2].alive = false;
+    contestants[3].alive = false;
+    contestants[4].alive = false;
+    contestants[5].alive = false;
+    contestants[6].alive = false;
+    //contestants[7].alive = false;
+    contestants[8].alive = false;
+    //contestants[9].alive = false;
+    contestants[10].alive = false;
+    contestants[11].alive = false;
+    contestants[12].alive = false;
+    contestants[13].alive = false;
+    contestants[14].alive = false;
+    
+    int playerAlive=0;
+    int j;
+    for (j=0;j<15;j++){
+        if (contestants[j].alive){
+            playerAlive++;
+        }
+    }
+    int i;
+    int a = 0, b = 0;
+    for (i=0 ; i<15 ; i++){
+        if (contestants[i].alive){
+            contestants[i].result = RNGroll(contestants[i].chance);
+            if (!contestants[i].result){
+                bool target1 = false, target2 = false;
+                while (!target1){
+                     a = rand()%15;
+                    if (contestants[a].alive){
+                        target1 = true;
+                    }
+                }
+                while (!target2){
+                     b = rand()%15;
+                    if (contestants[b].alive && a != b){
+                        target2 = true;
+                    }
+                }
+                Scenarios(contestants[i].name, contestants[a].name, contestants[b].name, playerAlive);
+            }
+        }
+    }
+    
+
 
     
     /*
-     Hello Bit Heroes!
-     Welcome to the 8th BHungerGames!
-     I come to you as I can offer something you greatly want.... A place in my friendlist... You read right! 
-     I will give a friend slot to one of you..... IF you manage to outclass the other contenders... 
-     You will be placed in an arena.. an RNG arena. Each contestant has 5% of chance to succeed....
-     I will take **10 contestants**. Who dares come forward?
-     May the odds be ever in your favour.
-     
+Hello Bit Heroes!
+Welcome to the 8th BHungerGames!
+I come to you as I can offer something you greatly want.... A place in my friendlist... You read right!
+I will give a friend slot to one of you..... IF you manage to outclass the other contenders...
+You will be placed in an arena.. an RNG arena. Each contestant has 90% of chance to survive in the arena....
+I will take **15 contestants**. Who dares come forward?
+Put a :shadown: if you want to participate. First 15 will enter the game.
+May the odds be ever in your favour.
+
      */
 }
 
@@ -765,8 +803,8 @@ int main(){
     int i;
     for (i=0; i<1;i++){
         //dummyFight();
-        simulation();
-        //BHungerGames();
+        //simulation();
+        BHungerGames();
     }
     //int a = test(2, 3);
     //printf("%d", a);

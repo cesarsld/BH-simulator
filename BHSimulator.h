@@ -13,6 +13,8 @@
 #pragma once
 struct HeroStruct;
 
+//struct will contain all stats and informations on hero. Will update its content when code gets more complex.
+
 typedef struct HeroStruct {
     int power;
     int stamina;
@@ -37,7 +39,6 @@ typedef struct HeroStruct {
     char name [20];
     
 } Hero;
-//Hero hero[5];
 
 
 #endif /* BHSimulator_h */
