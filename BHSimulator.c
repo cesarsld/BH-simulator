@@ -399,11 +399,11 @@ void simulation(){
    // scanf("%d", &playerNo);
     playerNo = 5;
         
-        byleth(0);
-        byleth(1);
-        byleth(2);
-        byleth(3);
-        byleth(4);
+        borealis(0);
+        tobey(1);
+        tobey(2);
+        tobey(3);
+        borealis(4);
         
         /*hero[0].power = 440;
         hero[1].power = 580;
@@ -543,36 +543,7 @@ void simulation(){
                     teamalive = false;
                     cycle = countermax;
                 }
-                /*if (hero[0].hp > 0){
-                    bossattack(0);
-                    dummycounter -= dummyinterval;
-                    //printf("hero 0 hp = %d\n", hero[0].hp);
-                } else if (hero[1].hp > 0){
-                    bossattack(1);
-                    dummycounter -= dummyinterval;
-                    //printf("hero 1 hp = %d\n", hero[1].hp);
-
-                } else if (hero[2].hp > 0){
-                    bossattack(2);
-                    dummycounter -= dummyinterval;
-                    //printf("hero 2 hp = %d\n", hero[2].hp);
-
-                } else if (hero[3].hp > 0){
-                    bossattack(3);
-                    dummycounter -= dummyinterval;
-                    //printf("hero 3 hp = %d\n", hero[3].hp);
-
-                } else if (hero[4].hp > 0){
-                    bossattack(4);
-                    dummycounter -= dummyinterval;
-                    //printf("hero 4 hp = %d\n", hero[4].hp);
-
-                } else {
-                    teamalive = false;
-                    cycle = countermax;
-                }*/
             }
-            
         }
     }
     if (!teamalive){
@@ -654,7 +625,7 @@ void dummyFight() {
 }
 
 void Scenarios(char name[20], char nameA[20], char nameB[20], int player){
-    int a = rand() % 5;
+    int a = rand() % 7;
     if (a ==0 && player > 2){
         printf ("%s made an alliance with %s to kill %s. But %s shouldn't have trusted %s... %s has killed %s.\n" ,name, nameA, nameB, name, nameA, nameA, name);
     } else if (a==1){
@@ -735,21 +706,21 @@ void BHungerGames(){
     contestants[14].alive = true;
 
     
-    contestants[0].alive = false;
-    contestants[1].alive = false;
-    contestants[2].alive = false;
-    contestants[3].alive = false;
-    contestants[4].alive = false;
-    contestants[5].alive = false;
-    contestants[6].alive = false;
+    //contestants[0].alive = false;
+    //contestants[1].alive = false;
+    //contestants[2].alive = false;
+    //contestants[3].alive = false;
+    //contestants[4].alive = false;
+    //contestants[5].alive = false;
+    //contestants[6].alive = false;
     //contestants[7].alive = false;
-    contestants[8].alive = false;
+    //contestants[8].alive = false;
     //contestants[9].alive = false;
-    contestants[10].alive = false;
-    contestants[11].alive = false;
-    contestants[12].alive = false;
-    contestants[13].alive = false;
-    contestants[14].alive = false;
+    //contestants[10].alive = false;
+    //contestants[11].alive = false;
+    //contestants[12].alive = false;
+    //contestants[13].alive = false;
+    //contestants[14].alive = false;
     
     int playerAlive=0;
     int j;
@@ -798,13 +769,45 @@ May the odds be ever in your favour.
      */
 }
 
+void accsim(){
+    int i;
+    int sim=1000000;
+    int roll1=0, roll2=0, roll3=0;
+    float deflectcount=0, evadecount=0, blockcount=0;
+    int deflect=10, evade=2.5, block = 42;
+    float dmgreduction=0;
+    int proccount=0;
+    float dproc, eproc, bproc;
+    for (i=0; i<sim; i++ ){
+        roll1 = rand()%100+1;
+        if (roll1 > deflect){
+            roll2 = rand()%1000+1;
+            if (roll2 > evade){
+                roll3 = rand()%100+1;
+                if (roll3 <= block){
+                    blockcount++;
+                }
+            } else evadecount++;
+        } else deflectcount++;
+    }
+    dproc=100*deflectcount/sim;
+    eproc=100*(evadecount/sim);
+    bproc=100*(blockcount/sim);
+    
+    printf("deflect: %f/%d = %f %% \nevade: %f/%d = %f %%\nblock: %f/%d = %f %%\n", deflectcount, sim, dproc, evadecount, sim, eproc, blockcount, sim, bproc);
+    proccount = deflectcount + evadecount + blockcount;
+    dmgreduction = 100 * (1-((sim-proccount+blockcount * 0.5)/sim));
+    printf("Damage mitigation: %f\n", dmgreduction);
+}
+
 int main(){
     srand((unsigned int)time(NULL));
     int i;
     for (i=0; i<1;i++){
         //dummyFight();
         //simulation();
-        BHungerGames();
+        //BHungerGames();
+        accsim();
     }
     //int a = test(2, 3);
     //printf("%d", a);
