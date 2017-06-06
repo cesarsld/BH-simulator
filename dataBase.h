@@ -25,3 +25,4 @@ void alchemie (int i);
 void taters (int i);
 void sils (int i);
 void hypno (int i);
+void psyk (int i);

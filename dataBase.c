@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include <string.h>
  
- extern Hero hero[5];
+extern Hero hero[5];
 
 void encon(int i) {
     
@@ -242,11 +242,11 @@ void casper (int i) {
 
 void shadown (int i) {
     
-    hero[i].power = 705;
+    hero[i].power = 829;
     
     hero[i].stamina = 185;
     
-    hero[i].agility = 327;
+    hero[i].agility = 204;
     
     hero[i].sp = 4; // no need to change this variable
     
@@ -391,7 +391,7 @@ void sss (int i){
     
     hero[i].agirune = 1.025; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
     
     hero[i].alive = true; // no need to change this value
 }
@@ -422,7 +422,7 @@ void tobey (int i){
     
     hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "boogie"); //For now I only have gemmi and nelson so put either
     
     hero[i].alive = true; // no need to change this value
 
@@ -517,7 +517,7 @@ void sils (int i) {
     
     hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
     
     hero[i].alive = true; // no need to change this value
 }
@@ -545,6 +545,37 @@ void hypno (int i) {
     hero[i].deflect = 0; // input delfect chance
     
     hero[i].powerrune = 1.095; // if you have 5% damage runes, imput 1.05
+    
+    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    
+    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    
+    hero[i].alive = true; // no need to change this value
+}
+
+void psyk (int i) {
+    
+    hero[i].power = 463;
+    
+    hero[i].stamina = 522;
+    
+    hero[i].agility = 192;
+    
+    hero[i].sp = 4; // no need to change this variable
+    
+    hero[i].critchance = 10; // input crit chance
+    
+    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
+    
+    hero[i].DSchance = 4.5; // input Dual strik chance
+    
+    hero[i].block = 25; // input block chance
+    
+    hero[i].evade = 12.5; // input evade chance
+    
+    hero[i].deflect = 6.25; // input delfect chance
+    
+    hero[i].powerrune = 1.02; // if you have 5% damage runes, imput 1.05
     
     hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
     
