@@ -40,6 +40,8 @@ typedef struct HeroStruct {
     
 } Hero;
 
+bool RNGroll(float a);
+
 
 #endif /* BHSimulator_h */
 
