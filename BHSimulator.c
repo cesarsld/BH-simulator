@@ -356,7 +356,7 @@ int BossSkillSelection(int sp,  float *finalAttack) {
 			spdummy -= 2;
 			targetMethod = 2;
 		}
-		else if (skillRoll >= 90) {
+		else if (skillRoll >= 95) {
 			float skillmodifier = (rand() % 136 + 102);
 			skillmodifier /= 100;
 			attackvalue = dummypower*skillmodifier;
@@ -573,11 +573,11 @@ void simulation(){
         //printf("How much agility on hero %d ?\n", i+1);
         //scanf("%d", &hero[i].agility);
         
+        hero[i].tr = turnRate(hero[i].power, hero[i].agility);
         hero[i].power *= hero[i].powerrune;
-        hero[i].agility *= hero[i].agirune;
+        hero[i].tr *= hero[i].agirune;
         hero[i].hp = hero[i].stamina * 10;
         hero[i].maxhp = hero[i].hp;
-        hero[i].tr = turnRate(hero[i].power, hero[i].agility);
         hero[i].interval = countermax / hero[i].tr;
         hero[i].counter=0;
     }
@@ -638,25 +638,40 @@ void simulation(){
 }
 
 void dummyFight() {
-    long power = 1200, stamina = 100, agility = 0, crit = 0, countermax = 100;
-    double critdmg = 1, ds = 0, interval ,counter = 0, prune = 1.25, arune = 1, critattack;
+    long power = 500, stamina = 100, agility = 500, crit = 15, countermax = 100;
+    double critdmg = 1.5, ds = 20, interval ,counter = 0, prune = 1, arune = 1, critattack;
     float tr;
+    bool petcheck;
+    tr = turnRate(power, agility);
     power *= prune;
     stamina = 100;
-    agility *= arune;
+    tr *= arune;
     critattack = power * critdmg;
-
-    tr = turnRate(power, agility);
+//4365
+    //3525
+    
     interval = countermax / tr;
-    bool critroll, dsroll;
+    bool critroll, dsroll, petcrit;
     long i;
     long long cycle, hitdone = 0, normalhit=0, crithit =0;
     long long damagedone=0;
+    int attackmodifier, attackvalue, pethit=0, petchance = 20;
     for (i=0;i<1000000;i++){
         for (cycle = 0 ; cycle <100 ; cycle++){
             counter++;
             if (counter >= interval){
                 hitdone++;
+                petcheck = RNGroll(petchance);
+                if (petcheck){
+                    attackmodifier = power * 0.54;
+                    attackvalue = rand()% attackmodifier + power * 0.63;
+                    petcrit = RNGroll(crit);
+                    if (petcrit){
+                        attackvalue *= critdmg;
+                    }
+                        damagedone += attackvalue;
+                    pethit++;
+                }
                 dsroll = RNGroll(ds);
                 
                 if(dsroll){
@@ -664,17 +679,61 @@ void dummyFight() {
                     if(critroll){
                         damagedone += critattack;
                         crithit++;
+                        petcheck = RNGroll(petchance);
+                        if (petcheck){
+                            attackmodifier = power * 0.54;
+                            attackvalue = rand()% attackmodifier + power * 0.63;
+                            petcrit = RNGroll(crit);
+                            if (petcrit){
+                                attackvalue *= critdmg;
+                            }
+                            damagedone += attackvalue;
+                            pethit++;
+                        }
                     } else {
                         damagedone += power;
                         normalhit++;
+                        petcheck = RNGroll(petchance);
+                        if (petcheck){
+                            attackmodifier = power * 0.54;
+                            attackvalue = rand()% attackmodifier + power * 0.63;
+                            petcrit = RNGroll(crit);
+                            if (petcrit){
+                                attackvalue *= critdmg;
+                            }
+                            damagedone += attackvalue;
+                            pethit++;
+                        }
                     }
                     critroll = RNGroll(crit);
                     if(critroll){
                         damagedone += critattack;
                         crithit++;
+                        petcheck = RNGroll(petchance);
+                        if (petcheck){
+                            attackmodifier = power * 0.54;
+                            attackvalue = rand()% attackmodifier + power * 0.63;
+                            petcrit = RNGroll(crit);
+                            if (petcrit){
+                                attackvalue *= critdmg;
+                            }
+                            damagedone += attackvalue;
+                            pethit++;
+                        }
                     } else {
                         damagedone += power;
                         normalhit++;
+                        petcheck = RNGroll(petchance);
+                        if (petcheck){
+                            attackmodifier = power * 0.54;
+                            attackvalue = rand()% attackmodifier + power * 0.63;
+                            petcrit = RNGroll(crit);
+                            if (petcrit){
+                                attackvalue *= critdmg;
+                            }
+                            damagedone += attackvalue;
+                            pethit++;
+                        }
                     }
                 }
                 else {
@@ -682,9 +741,31 @@ void dummyFight() {
                     if(critroll){
                         damagedone += critattack;
                         crithit++;
+                        petcheck = RNGroll(petchance);
+                        if (petcheck){
+                            attackmodifier = power * 0.54;
+                            attackvalue = rand()% attackmodifier + power * 0.63;
+                            petcrit = RNGroll(crit);
+                            if (petcrit){
+                                attackvalue *= critdmg;
+                            }
+                            damagedone += attackvalue;
+                            pethit++;
+                        }
                     } else {
                     damagedone += power;
                     normalhit++;
+                        petcheck = RNGroll(petchance);
+                        if (petcheck){
+                            attackmodifier = power * 0.54;
+                            attackvalue = rand()% attackmodifier + power * 0.63;
+                            petcrit = RNGroll(crit);
+                            if (petcrit){
+                                attackvalue *= critdmg;
+                            }
+                            damagedone += attackvalue;
+                            pethit++;
+                        }
                     }
                 }
                 
@@ -700,6 +781,8 @@ void dummyFight() {
     printf("normal hits = %lld\n", normalhit);
     printf(" crithits = %lld\n", crithit);
     printf("dps = %lld\n", dps);
+    printf("pet procs = %d\n", pethit);
+    printf("turnrate = %f\n", tr);
     
 }
 
@@ -742,6 +825,6 @@ int main(){
         //simulation();
        BHungerGames();
         //accsim();
-		getchar();
+		//getchar();
     }
 }

@@ -3,7 +3,7 @@
 //  BH Simulator
 //
 //  Created by Cesar Salad Jaimes on 20/04/2017.
-//  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
+//  Copyright ï¿½ 2017 Cesar Salad Jaimes. All rights reserved.
 //
 
 #include <stdio.h>
@@ -234,7 +234,7 @@ void Scenarios(char name[20], char nameA[20], char nameB[20], int player) {
 		else if (a == 41 && scenarioDelay[a] == 0) {
             scenarioDelay[a] += 20;
 			scenarioSelected = true;
-			printf("%s didn't use CAPS in Salt_mines.Byleth bans him forever!\n\n", name);
+			printf("%s didn't use CAPS in Salt_mines. Byleth bans him forever!\n\n", name);
 		}
 		else if (a == 42 && scenarioDelay[a] == 0) {
             scenarioDelay[a] += 20;
@@ -448,7 +448,7 @@ void Scenarios(char name[20], char nameA[20], char nameB[20], int player) {
 
 void BHungerGames() {
 	//
-	int participants = 150;
+	int participants = 200;
 	int t;
 	typedef struct BHG {
 		char name[20];
@@ -457,7 +457,7 @@ void BHungerGames() {
 		bool alive;
 	} Contestants;
 
-	Contestants contestants[150];
+	Contestants contestants[200];
 
 	strcpy(contestants[0].name, "Ryansdryan");
 	strcpy(contestants[1].name, "ACphoenix");
@@ -609,6 +609,56 @@ void BHungerGames() {
 	strcpy(contestants[147].name, "DeadlyNinja123");
 	strcpy(contestants[148].name, "deathreaver198");
 	strcpy(contestants[149].name, "StrikerNZ");
+    strcpy(contestants[150].name, "HidetoBandou");
+    strcpy(contestants[151].name, "Pyro");
+    strcpy(contestants[152].name, "Grindalwald");
+    strcpy(contestants[153].name, "Hermes");
+    strcpy(contestants[154].name, "Tsunatsu");
+    strcpy(contestants[155].name, "Geugen14");
+    strcpy(contestants[156].name, "Living Pillow");
+    strcpy(contestants[157].name, "phear");
+    strcpy(contestants[158].name, "derrkkk");
+    strcpy(contestants[159].name, "Pettirosso - lvl 92");
+    strcpy(contestants[160].name, "Kimnak");
+    strcpy(contestants[161].name, "LG1T");
+    strcpy(contestants[162].name, "Aerid");
+    strcpy(contestants[163].name, "Ardazafer");
+    strcpy(contestants[164].name, "DoktaR");
+    strcpy(contestants[165].name, "Recab");
+    strcpy(contestants[166].name, "Encon");
+    strcpy(contestants[167].name, "Kempha");
+    strcpy(contestants[168].name, "Bosshog732");
+    strcpy(contestants[169].name, "tonytyzhang");
+    strcpy(contestants[170].name, "co_giy");
+    strcpy(contestants[171].name, "MGEKO");
+    strcpy(contestants[172].name, "McCluckle");
+    strcpy(contestants[173].name, "kanonbaal");
+    strcpy(contestants[174].name, "Moqcev");
+    strcpy(contestants[175].name, "SoulCrusherE");
+    strcpy(contestants[176].name, "Taters");
+    strcpy(contestants[177].name, "Forch");
+    strcpy(contestants[178].name, "alchemie");
+    strcpy(contestants[179].name, "ThingBlue");
+    strcpy(contestants[180].name, "Zayu");
+    strcpy(contestants[181].name, "greendia");
+    strcpy(contestants[182].name, "xionicmadness");
+    strcpy(contestants[183].name, "Azderon");
+    strcpy(contestants[184].name, "SinOfPride");
+    strcpy(contestants[185].name, "Blupapi");
+    strcpy(contestants[186].name, "TheNamelessGod");
+    strcpy(contestants[187].name, "Fresshness");
+    strcpy(contestants[188].name, "minuminu");
+    strcpy(contestants[189].name, "Zlexar");
+    strcpy(contestants[190].name, "Nikkitine");
+    strcpy(contestants[191].name, "12sPaWn12");
+    strcpy(contestants[192].name, "mnaitzme12");
+    strcpy(contestants[193].name, "Hiibye");
+    strcpy(contestants[194].name, "ikillforblood69");
+    strcpy(contestants[195].name, "Phreakaz0id");
+    strcpy(contestants[196].name, "PancakeJuice");
+    strcpy(contestants[197].name, "ChiefPlasma24");
+    strcpy(contestants[198].name, "16ind");
+    strcpy(contestants[199].name, "Labelle");
 
 	for (t = 0; t < participants; t++) {
 		contestants[t].chance = 90;
@@ -689,7 +739,7 @@ void BHungerGames() {
 	}
 	int i;
 	int a = 0, b = 0;
-	while (playerAlive > 1) {
+	while (playerAlive > 3) {  /// :)r
 		morningcount = playerAlive;
 		if (night % 7 == 0) {
 			printf("\n\n**Players remaining: %d**\n\n", playerAlive);
@@ -740,7 +790,7 @@ void BHungerGames() {
 
 	/*
 	Hello Bit Heroes!
-	Welcome to the 8th BHungerGames!
+	Welcome to the 13th BHungerGames!
 	I come to you as I can offer something you greatly want.... A place in my friendlist... You read right!
 	I will give a friend slot to one of you..... IF you manage to outclass the other contenders...
 	You will be placed in an arena.. an RNG arena. Each contestant has 95% of chance to survive in the arena....
