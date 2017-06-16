@@ -1,0 +1,74 @@
+﻿  dataBase.c
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(41): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(71): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(75): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(131): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(135): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(139): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(166): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(170): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(194): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(230): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(234): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(261): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(265): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(288): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(292): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(298): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(323): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(347): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(355): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(386): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(390): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(392): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(413): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(417): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(421): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(449): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(451): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(455): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(476): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(480): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(484): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(486): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(547): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(570): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(574): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(576): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\database.c(578): warning C4305: '=': truncation from 'double' to 'float'
+  PetLogic.c
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(27): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(31): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(44): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(48): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(40): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(41): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(62): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(66): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(70): warning C4013: 'healLogic' undefined; assuming extern returning int
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(59): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(60): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\petlogic.c(84): warning C4013: 'teamHeal' undefined; assuming extern returning int
+  HeroLogic.c
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(30): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(32): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(36): warning C4013: 'healLogic' undefined; assuming extern returning int
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(26): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(66): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(72): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(73): warning C4013: 'petSelection' undefined; assuming extern returning int
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(47): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\herologic.c(58): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  BHSimulator.c
+c:\users\cesar jaimes\documents\github\bh-simulator\bhsimulator.c(138): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\bhsimulator.c(156): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  BH.vcxproj -> C:\Users\Cesar Jaimes\Documents\GitHub\BH-Simulator\BH\Debug\BH.exe
+  BH.vcxproj -> C:\Users\Cesar Jaimes\Documents\GitHub\BH-Simulator\BH\Debug\BH.pdb (Partial PDB)
