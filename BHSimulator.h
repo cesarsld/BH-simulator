@@ -1,5 +1,3 @@
-//
-//  BHSimulator.h
 //  BH Simulator
 //
 //  Created by Cesar Salad Jaimes on 20/04/2017.

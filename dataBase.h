@@ -1,5 +1,3 @@
-//
-//  heroSetup.h
 //  BH Simulator
 //
 //  Created by Cesar Salad Jaimes on 01/06/2017.
