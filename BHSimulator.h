@@ -24,12 +24,12 @@ typedef struct HeroStruct {
     float tr;
     float interval;
     float counter;
-    int critchance;
-    int DSchance;
+	float critchance;
+	float DSchance;
     float critdamage;
-    int block;
-    int evade;
-    int deflect;
+	float block;
+	float evade;
+	float deflect;
     float powerrune;
     float agirune;
     char pet [10];
