@@ -3,7 +3,7 @@
 //  BH Simulator
 //
 //  Created by Cesar Salad Jaimes on 20/04/2017.
-//  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
+//  Copyright ï¿½ 2017 Cesar Salad Jaimes. All rights reserved.
 //
 
 #include <stdio.h>
@@ -14,10 +14,12 @@
 #include <string.h>
 #include "dataBase.h"
 #include "BHSimulator.h"
+#include "Logic.h"
+#include "PetLogic.h"
 
 
 extern Hero hero[5];
-extern dummypower, spdummy, hpdummy;
+extern int dummypower, spdummy, hpdummy;
 
 
 void bossattack() {

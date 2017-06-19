@@ -3,7 +3,7 @@
 //  BH Simulator
 //
 //  Created by Cesar Salad Jaimes on 20/04/2017.
-//  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
+//  Copyright ï¿½ 2017 Cesar Salad Jaimes. All rights reserved.
 //
 
 #include <stdio.h>
@@ -17,7 +17,7 @@
 
 
 extern Hero hero[5];
-extern dummypower, spdummy;
+extern int dummypower, spdummy;
 
 bool RNGroll(float a) {
 	bool outcome;
