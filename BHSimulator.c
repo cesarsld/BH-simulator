@@ -13,12 +13,11 @@
 #include <string.h>
 #include "dataBase.h"
 #include "BHSimulator.h"
-#include "BHungerGames.h"
 #include "Logic.h"
 #include "PetLogic.h"
 #include "HeroLogic.h"
 #include "BossLogic.h"
-#include "SideProjects.h"
+
 
 Hero hero[5];           // size of array indicated max amount of heroes in team.
 

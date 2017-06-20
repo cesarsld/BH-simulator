@@ -21,9 +21,6 @@
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\dataBase.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\BHungerGames.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\Logic.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\dataBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\BHungerGames.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\BossLogic.h">

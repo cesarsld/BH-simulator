@@ -112,7 +112,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\BHSimulator.c" />
-    <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\BHungerGames.c" />
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\BossLogic.c" />
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\dataBase.c" />
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\HeroLogic.c" />
@@ -122,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\BHSimulator.h" />
-    <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\BHungerGames.h" />
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\BossLogic.h" />
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\dataBase.h" />
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\HeroLogic.h" />

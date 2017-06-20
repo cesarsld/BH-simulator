@@ -1,4 +1,4 @@
 ﻿  BHSimulator.c
-c:\users\cesar jaimes\documents\github\bh-simulator\bhsimulator.c(139): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+c:\users\cesar jaimes\documents\github\bh-simulator\bhsimulator.c(138): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
   BH.vcxproj -> C:\Users\Cesar Jaimes\Documents\GitHub\BH-Simulator\BH\Debug\BH.exe
   BH.vcxproj -> C:\Users\Cesar Jaimes\Documents\GitHub\BH-Simulator\BH\Debug\BH.pdb (Partial PDB)
