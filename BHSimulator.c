@@ -26,29 +26,28 @@ int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy, spdummy
 
 void simulation(){
     int p;
+    int i;
+    
     float win=0;
     float lose=0;
     float winrate;
-    int games = 10000;
     
-    for (p=0 ; p < games ; p++){  // for loop to simulate as many fights as you want
-    dummypower = 1700;
-    dummystamina = 3060;
-    dummyagility = 680;
-    int countermax = 100;
+    int games = 10000;
     int playerNo;
-    int i;
+    int countermax = 100;
     int cycle;
     
     float dummytr;
-    float dummycounter=0;
     float dummyinterval;
+    float dummycounter=0;
     
     bool DS;
     bool teamalive = true;
     
-
-    playerNo = 5;
+    
+    for (p=0 ; p < games ; p++){  // for loop to simulate as many fights as you want
+        teamalive = true;
+        playerNo = 5;
         
         sils(0);
         sss(1);
@@ -128,74 +127,71 @@ void simulation(){
         hero[4].alive = true;*/
 
         
-    hpdummy = dummystamina * 10;
-    dummytr = turnRate(dummypower, dummyagility);
-    dummyinterval = countermax / dummytr;
+        hpdummy = dummystamina * 10;
+        dummytr = turnRate(dummypower, dummyagility);
+        dummyinterval = countermax / dummytr;
     
 
-    for(i=0 ; i<playerNo ; i++){        
-        hero[i].tr = turnRate(hero[i].power, hero[i].agility);
-        hero[i].power *= hero[i].powerrune;
-        hero[i].tr *= hero[i].agirune;
-        hero[i].hp = hero[i].stamina * 10;
-        hero[i].maxhp = hero[i].hp;
-        hero[i].interval = countermax / hero[i].tr;
-        hero[i].counter=0;
-    }
+        for(i=0 ; i<playerNo ; i++){
+            hero[i].tr = turnRate(hero[i].power, hero[i].agility);
+            hero[i].power *= hero[i].powerrune;
+            hero[i].tr *= hero[i].agirune;
+            hero[i].hp = hero[i].stamina * 10;
+            hero[i].maxhp = hero[i].hp;
+            hero[i].interval = countermax / hero[i].tr;
+            hero[i].counter=0;
+        }
     
     
-    while (hpdummy>0 && teamalive==true){           //fight will stop if either party is dead
-        for(cycle=1 ; cycle<=countermax ; cycle++){
-            dummycounter++;
-            for(i=0 ; i<playerNo ; i++){
-                hero[i].counter++;
-                if(hero[i].counter >= hero[i].interval && hero[i].alive){      //checks if it's player's turn to attack
-                    hpPerc();
-                    hero[i].sp ++;
-                    petSelection(i);
-                    DS = RNGroll(hero[i].DSchance);
-                    if (DS){
-                        heroattack(i, DS);
-						DS = false;
-                        heroattack(i, DS);
-                        //printf("kal hp = %d\n", hpdummy);
-                    } else {heroattack(i, DS);}
-                        //printf("kal hp = %d\n", hpdummy);}
-                    hero[i].counter -= hero[i].interval;
+        while (hpdummy>0 && teamalive==true){           //fight will stop if either party is dead
+            for(cycle=1 ; cycle<=countermax ; cycle++){
+                dummycounter++;
+                for(i=0 ; i<playerNo ; i++){
+                    hero[i].counter++;
+                    if(hero[i].counter >= hero[i].interval && hero[i].alive){      //checks if it's player's turn to attack
+                        hpPerc();
+                        hero[i].sp ++;
+                        petSelection(i);
+                        DS = RNGroll(hero[i].DSchance);
+                        if (DS){
+                            heroattack(i, DS);
+                            DS = false;
+                            heroattack(i, DS);
+                        } else {heroattack(i, DS);}
+                        hero[i].counter -= hero[i].interval;
+                        if (hpdummy<=0){
+                            win++;
+                            i = playerNo;
+                            cycle = countermax;
+                            dummycounter = 0;
+                        }
+                    }
+                }
+                if (hpdummy > 0 && dummycounter >= dummyinterval){         //checks if it's boss' turn to attack
+                    spdummy++;
+                    bossattack();
+                    dummycounter -= dummyinterval;
                     if (hpdummy<=0){
-                        //printf("You killed the dummy!\n");
                         win++;
                         i = playerNo;
+                        cycle = countermax;
+                        dummycounter = 0;
+                    }
+                    if (!hero[0].alive && !hero[1].alive && !hero[2].alive && !hero[3].alive && !hero[4].alive){
+                        teamalive = false;
                         cycle = countermax;
                     }
                 }
             }
-            if (hpdummy > 0 && dummycounter >= dummyinterval){         //checks if it's boss' turn to attack
-                spdummy++;
-                bossattack();
-                dummycounter -= dummyinterval;
-                if (hpdummy<=0){
-                    win++;
-                    i = playerNo;
-                    cycle = countermax;
-                }
-
-                if (!hero[0].alive && !hero[1].alive && !hero[2].alive && !hero[3].alive && !hero[4].alive){
-                    teamalive = false;
-                    cycle = countermax;
-                }
-            }
         }
-    }
-    if (!teamalive){
-        lose++;
-    }
-
+        if (!teamalive){
+            lose++;
+            dummycounter = 0;
+        }
     }
     winrate = (win / games) * 100;
     printf("won = %f lost = %f\n", win, lose);
     printf("winrate = %f %%\n", winrate);         // winrate %. Change winrate denominator to adjust % value.
-
 }
 
 int main(){
@@ -208,5 +204,5 @@ int main(){
         //BHungerGames();
         //accsim();
     }
-	getchar();
+	//getchar();
 }
