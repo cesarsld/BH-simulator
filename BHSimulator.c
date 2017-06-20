@@ -171,7 +171,7 @@ void simulation(){
                 }
                 if (hpDummy > 0 && dummyCounter >= dummyInterval){         //checks if it's boss' turn to attack
                     spDummy++;
-                    bossattack();
+                    bossAttack();
                     dummyCounter -= dummyInterval;
                     if (hpDummy<=0){
                         win++;
