@@ -22,7 +22,7 @@
 
 Hero hero[5];           // size of array indicated max amount of heroes in team.
 
-int dummypower = 1700, dummystamina = 3060, dummyagility = 680, hpdummy, spdummy=0;
+int dummyPower = 1700, dummyStamina = 3060, dummyAgility = 680, hpDummy, spDummy=0; //heroic Kaleido parameters
 
 void simulation(){
     int p;
@@ -30,23 +30,23 @@ void simulation(){
     
     float win=0;
     float lose=0;
-    float winrate;
+    float winRate;
     
-    int games = 10000;
+    int games = 10000; //number of times fight will run.
     int playerNo;
-    int countermax = 100;
+    int counterMax = 100;
     int cycle;
     
-    float dummytr;
-    float dummyinterval;
-    float dummycounter=0;
+    float dummyTR;
+    float dummyInterval;
+    float dummyCounter=0;
     
     bool DS;
-    bool teamalive = true;
+    bool teamAlive = true;
     
     
-    for (p=0 ; p < games ; p++){  // for loop to simulate as many fights as you want
-        teamalive = true;
+    for (p=0 ; p < games ; p++){  // for loop to simulate as many fights as you want.
+        teamAlive = true;
         playerNo = 5;
         
         sils(0);
@@ -54,7 +54,9 @@ void simulation(){
         tobey(2);
         shadown(3);
         borealis(4);
-        
+
+        // Next lines of code can be used if you want a specfic setup. Otherwise use players from existing database.
+
         /*hero[0].power = 440;
         hero[1].power = 580;
         hero[2].power = 930;
@@ -105,16 +107,16 @@ void simulation(){
         hero[2].deflect = 0;
         hero[3].deflect = 0;
         hero[4].deflect = 5;
-        hero[0].powerrune = 1;
-        hero[1].powerrune = 1.175;
-        hero[2].powerrune = 1.2;
-        hero[3].powerrune = 1.05;
-        hero[4].powerrune = 1;
-        hero[0].agirune = 1;
-        hero[1].agirune = 1;
-        hero[2].agirune = 1;
-        hero[3].agirune = 1.025;
-        hero[4].agirune = 1;         
+        hero[0].powerRune = 1;
+        hero[1].powerRune = 1.175;
+        hero[2].powerRune = 1.2;
+        hero[3].powerRune = 1.05;
+        hero[4].powerRune = 1;
+        hero[0].agiRune = 1;
+        hero[1].agiRune = 1;
+        hero[2].agiRune = 1;
+        hero[3].agiRune = 1.025;
+        hero[4].agiRune = 1;         
         strcpy (hero[0].pet, "nelson");
         strcpy (hero[1].pet, "gemmi");
         strcpy (hero[2].pet, "nelson");
@@ -127,71 +129,71 @@ void simulation(){
         hero[4].alive = true;*/
 
         
-        hpdummy = dummystamina * 10;
-        dummytr = turnRate(dummypower, dummyagility);
-        dummyinterval = countermax / dummytr;
+        hpDummy = dummyStamina * 10;
+        dummyTR = turnRate(dummyPower, dummyAgility);
+        dummyInterval = counterMax / dummyTR;
     
 
-        for(i=0 ; i<playerNo ; i++){
+        for(i=0 ; i<playerNo ; i++){  //initialisation
             hero[i].tr = turnRate(hero[i].power, hero[i].agility);
-            hero[i].power *= hero[i].powerrune;
-            hero[i].tr *= hero[i].agirune;
+            hero[i].power *= hero[i].powerRune;
+            hero[i].tr *= hero[i].agiRune;
             hero[i].hp = hero[i].stamina * 10;
-            hero[i].maxhp = hero[i].hp;
-            hero[i].interval = countermax / hero[i].tr;
+            hero[i].maxHP = hero[i].hp;
+            hero[i].interval = counterMax / hero[i].tr;
             hero[i].counter=0;
         }
     
     
-        while (hpdummy>0 && teamalive==true){           //fight will stop if either party is dead
-            for(cycle=1 ; cycle<=countermax ; cycle++){
-                dummycounter++;
+        while (hpDummy>0 && teamAlive==true){           //fight will stop if either party is dead
+            for(cycle=1 ; cycle<=counterMax ; cycle++){
+                dummyCounter++;
                 for(i=0 ; i<playerNo ; i++){
                     hero[i].counter++;
                     if(hero[i].counter >= hero[i].interval && hero[i].alive){      //checks if it's player's turn to attack
                         hpPerc();
-                        hero[i].sp ++;
+                        hero[i].sp ++;  
                         petSelection(i);
                         DS = RNGroll(hero[i].DSchance);
                         if (DS){
-                            heroattack(i, DS);
+                            heroAttack(i, DS);
                             DS = false;
-                            heroattack(i, DS);
-                        } else {heroattack(i, DS);}
+                            heroAttack(i, DS);
+                        } else {heroAttack(i, DS);}
                         hero[i].counter -= hero[i].interval;
-                        if (hpdummy<=0){
+                        if (hpDummy<=0){
                             win++;
                             i = playerNo;
-                            cycle = countermax;
-                            dummycounter = 0;
+                            cycle = counterMax;
+                            dummyCounter = 0;
                         }
                     }
                 }
-                if (hpdummy > 0 && dummycounter >= dummyinterval){         //checks if it's boss' turn to attack
-                    spdummy++;
+                if (hpDummy > 0 && dummyCounter >= dummyInterval){         //checks if it's boss' turn to attack
+                    spDummy++;
                     bossattack();
-                    dummycounter -= dummyinterval;
-                    if (hpdummy<=0){
+                    dummyCounter -= dummyInterval;
+                    if (hpDummy<=0){
                         win++;
                         i = playerNo;
-                        cycle = countermax;
-                        dummycounter = 0;
+                        cycle = counterMax;
+                        dummyCounter = 0;
                     }
                     if (!hero[0].alive && !hero[1].alive && !hero[2].alive && !hero[3].alive && !hero[4].alive){
-                        teamalive = false;
-                        cycle = countermax;
+                        teamAlive = false;
+                        cycle = counterMax;
                     }
                 }
             }
         }
-        if (!teamalive){
+        if (!teamAlive){
             lose++;
-            dummycounter = 0;
+            dummyCounter = 0;
         }
     }
-    winrate = (win / games) * 100;
+    winRate = (win / games) * 100;
     printf("won = %f lost = %f\n", win, lose);
-    printf("winrate = %f %%\n", winrate);         // winrate %. Change winrate denominator to adjust % value.
+    printf("winRate = %f %%\n", winRate);         
 }
 
 int main(){
@@ -204,5 +206,5 @@ int main(){
         //BHungerGames();
         //accsim();
     }
-	//getchar();
+	getchar();
 }

@@ -17,7 +17,7 @@
 
 
 extern Hero hero[5];
-extern int dummypower, spdummy;
+extern int dummyPower, spDummy;
 
 bool RNGroll(float a) {
 	bool outcome;
@@ -42,21 +42,21 @@ float turnRate(long b, long a) {
 
 void teamHeal(int l) {
 	int i;
-	int healmodifier = hero[l].power * 0.072;
-	int healvalue = rand() % healmodifier + 0.324 * hero[l].power;
+	int healModifier = hero[l].power * 0.072;
+	int healValue = rand() % healModifier + 0.324 * hero[l].power;
 
-	bool critroll = RNGroll(hero[l].critchance);
-	bool petroll = RNGroll(20);
+	bool critroll = RNGroll(hero[l].critChance);
+	bool petRoll = RNGroll(20);
 
 	if (critroll) {
-		healvalue *= hero[l].critdamage;
+		healValue *= hero[l].critDamage;
 	}
-	if (petroll) {
+	if (petRoll) {
 		for (i = 0; i<5; i++) {
 			if (hero[i].hp >0) {
-				hero[i].hp += healvalue;
-				if (hero[i].hp >= hero[i].maxhp) {
-					hero[i].hp = hero[i].maxhp;
+				hero[i].hp += healValue;
+				if (hero[i].hp >= hero[i].maxHP) {
+					hero[i].hp = hero[i].maxHP;
 				}
 			}
 		}
@@ -66,7 +66,7 @@ void teamHeal(int l) {
 void hpPerc() {
 	int i;
 	for (i = 0; i<5; i++) {
-		hero[i].hpPerc = (float)hero[i].hp / hero[i].maxhp;
+		hero[i].hpPerc = (float)hero[i].hp / hero[i].maxHP;
 	}
 }
 
@@ -89,7 +89,7 @@ int healLogic() {
 	return lowest;
 }
 
-int TargetSelection(int method) {
+int targetSelection(int method) {
 	int target = 0;
 	int i = 0;
 	bool targetLocked = false;
@@ -124,38 +124,38 @@ int TargetSelection(int method) {
 	return target;
 }
 
-int BossSkillSelection(int sp, float *finalAttack) {
-	float attackvalue = 0;
+int bossSkillSelection(int sp, float *finalAttack) {
+	float attackValue = 0;
 	int skillRoll = 0;
-	int attackmodifier = 0;
+	int attackModifier = 0;
 	int targetMethod = 0;
 
 	if (sp < 2) {
 		//normal attack
-		attackmodifier = 0.2 * dummypower;
-		attackvalue = rand() % attackmodifier + 0.9 * dummypower;
+		attackModifier = 0.2 * dummyPower;
+		attackValue = rand() % attackModifier + 0.9 * dummyPower;
 		targetMethod = 1;
 	}
 	else if (sp < 4) {
 		// 1 sp skill AI
 		skillRoll = rand() % 100;
 		if (skillRoll < 20) {
-			attackmodifier = 0.2 * dummypower;
-			attackvalue = rand() % attackmodifier + 0.9 * dummypower;
+			attackModifier = 0.2 * dummyPower;
+			attackValue = rand() % attackModifier + 0.9 * dummyPower;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 20 && skillRoll < 60) {
-			float skillmodifier = (rand() % 126 + 94);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 126 + 94);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 60) {
-			float skillmodifier = (rand() % 132 + 99);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 132 + 99);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 2;
 		}
 	}
@@ -163,29 +163,29 @@ int BossSkillSelection(int sp, float *finalAttack) {
 		// 1 - 2 sp skill AI
 		skillRoll = rand() % 100;
 		if (skillRoll < 15) {
-			attackmodifier = 0.2 * dummypower;
-			attackvalue = rand() % attackmodifier + 0.9 * dummypower;
+			attackModifier = 0.2 * dummyPower;
+			attackValue = rand() % attackModifier + 0.9 * dummyPower;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 15 && skillRoll < 55) {
-			float skillmodifier = (rand() % 126 + 94);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 126 + 94);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 55 && skillRoll < 95) {
-			float skillmodifier = (rand() % 132 + 99);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 132 + 99);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 2;
 		}
 		else if (skillRoll >= 95) {
-			float skillmodifier = (rand() % 136 + 102);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 4;
+			float skillModifier = (rand() % 136 + 102);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 4;
 			targetMethod = 3;
 		}
 	}
@@ -193,29 +193,29 @@ int BossSkillSelection(int sp, float *finalAttack) {
 		// 1 - 2 sp skill AI
 		skillRoll = rand() % 100;
 		if (skillRoll < 5) {
-			attackmodifier = 0.2 * dummypower;
-			attackvalue = rand() % attackmodifier + 0.9 * dummypower;
+			attackModifier = 0.2 * dummyPower;
+			attackValue = rand() % attackModifier + 0.9 * dummyPower;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 5 && skillRoll < 50) {
-			float skillmodifier = (rand() % 126 + 94);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 126 + 94);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 50 && skillRoll < 95) {
-			float skillmodifier = (rand() % 132 + 99);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 132 + 99);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 2;
 		}
 		else if (skillRoll >= 95) {
-			float skillmodifier = (rand() % 136 + 102);
-			skillmodifier /= 100;
-			attackvalue = dummypower * skillmodifier;
-			spdummy -= 4;
+			float skillModifier = (rand() % 136 + 102);
+			skillModifier /= 100;
+			attackValue = dummyPower * skillModifier;
+			spDummy -= 4;
 			targetMethod = 3;
 		}
 	}
@@ -223,32 +223,32 @@ int BossSkillSelection(int sp, float *finalAttack) {
 		// 1 - 2 sp skill AI
 		skillRoll = rand() % 100;
 		if (skillRoll < 0) {
-			attackmodifier = 0.2 * dummypower;
-			attackvalue = rand() % attackmodifier + 0.9 * dummypower;
+			attackModifier = 0.2 * dummyPower;
+			attackValue = rand() % attackModifier + 0.9 * dummyPower;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 0 && skillRoll < 45) {
-			float skillmodifier = (rand() % 126 + 94);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 126 + 94);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 1;
 		}
 		else if (skillRoll >= 45 && skillRoll < 95) {
-			float skillmodifier = (rand() % 132 + 99);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 2;
+			float skillModifier = (rand() % 132 + 99);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 2;
 			targetMethod = 2;
 		}
 		else if (skillRoll >= 95) {
-			float skillmodifier = (rand() % 136 + 102);
-			skillmodifier /= 100;
-			attackvalue = dummypower*skillmodifier;
-			spdummy -= 4;
+			float skillModifier = (rand() % 136 + 102);
+			skillModifier /= 100;
+			attackValue = dummyPower*skillModifier;
+			spDummy -= 4;
 			targetMethod = 3;
 		}
 	}
-	*finalAttack = attackvalue;
+	*finalAttack = attackValue;
 	return targetMethod;
 }

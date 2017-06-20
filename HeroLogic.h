@@ -8,4 +8,4 @@
 
 void spreadHealingSkill(int k);
 
-void heroattack(int k, bool dual);
+void heroAttack(int k, bool dual);

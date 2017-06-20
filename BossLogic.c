@@ -19,34 +19,34 @@
 
 
 extern Hero hero[5];
-extern int dummypower, spdummy, hpdummy;
+extern int dummyPower, spDummy, hpDummy;
 
 
-void bossattack() {
+void bossAttack() {
 	int k;
-	float attackvalue = 0;
+	float attackValue = 0;
 	int target;
-	target = BossSkillSelection(spdummy, &attackvalue);
+	target = bossSkillSelection(spDummy, &attackValue);
 
-	k = TargetSelection(target);
+	k = targetSelection(target);
 
-	bool blockroll, evaderoll, deflectroll, redirectroll;
+	bool blockRoll, evadeRoll, deflectRoll, redirectRoll;
 
-	bool critroll = RNGroll(10);
-	redirectroll = RNGroll(25);
-	if (redirectroll) {
+	bool critRoll = RNGroll(10);
+	redirectRoll = RNGroll(25);
+	if (redirectRoll) {
 		k = 4;
 	}
-	if (critroll) {
-		attackvalue *= 1.5;
+	if (critRoll) {
+		attackValue *= 1.5;
 	}
-	deflectroll = RNGroll(hero[k].deflect); //following IFs statements to take account of defensive stats of Hero
-	if (!deflectroll) {
-		evaderoll = RNGroll(hero[k].evade);
-		if (!evaderoll) {
-			blockroll = RNGroll(hero[k].block);
-			if (blockroll) {
-				hero[k].hp -= 0.5 * attackvalue;
+	deflectRoll = RNGroll(hero[k].deflect); //following IFs statements to take account of defensive stats of Hero
+	if (!deflectRoll) {
+		evadeRoll = RNGroll(hero[k].evade);
+		if (!evadeRoll) {
+			blockRoll = RNGroll(hero[k].block);
+			if (blockRoll) {
+				hero[k].hp -= 0.5 * attackValue;
 				if (hero[k].hp <= 0) {
 					hero[k].alive = false;
 				}
@@ -55,7 +55,7 @@ void bossattack() {
 				}
 			}
 			else {
-				hero[k].hp -= attackvalue;
+				hero[k].hp -= attackValue;
 				if (hero[k].hp <= 0) {
 					hero[k].alive = false;
 				}
@@ -66,7 +66,7 @@ void bossattack() {
 		}
 	}
 	else {
-		hpdummy -= attackvalue;
+		hpDummy -= attackValue;
 
 	}
 }

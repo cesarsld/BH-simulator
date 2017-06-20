@@ -18,36 +18,36 @@
 
 
 extern Hero hero[5];
-extern int dummypower, spdummy, hpdummy;
+extern int dummyPower, spDummy, hpDummy;
 
 // unity skill code
 void spreadHealingSkill(int k) {
 	int i;
 	int target = 0;
-	int healingvalue = 0;
-	int healingmodifier = 0.365 * hero[k].power;
+	int healingValue = 0;
+	int healingModifier = 0.365 * hero[k].power;
 
-	healingvalue = rand() % healingmodifier + 0.73 * hero[k].power;
+	healingValue = rand() % healingModifier + 0.73 * hero[k].power;
 
-	bool critroll = RNGroll(hero[k].critchance);
-	if (critroll) {
-		healingvalue *= hero[k].critdamage;
+	bool critRoll = RNGroll(hero[k].critChance);
+	if (critRoll) {
+		healingValue *= hero[k].critDamage;
 	}
 
-	for (i = 0; i < healingvalue; i++) {
+	for (i = 0; i < healingValue; i++) {
 		target = healLogic();
 		hero[target].hp++;
-		if (hero[target].hp > hero[target].maxhp) {
-			hero[target].hp = hero[target].maxhp;
+		if (hero[target].hp > hero[target].maxHP) {
+			hero[target].hp = hero[target].maxHP;
 		}
 	}
 }
 
-void heroattack(int k, bool dual) {
+void heroAttack(int k, bool dual) {
 	int skillSelection;
-	float attackvalue = 0;
-	int attackmodifier = 0.2 * hero[k].power;
-	attackvalue = rand() % attackmodifier + 0.9 * hero[k].power;
+	float attackValue = 0;
+	int attackModifier = 0.2 * hero[k].power;
+	attackValue = rand() % attackModifier + 0.9 * hero[k].power;
 	if (hero[k].sp >= 2) {
 		skillSelection = rand() % 100;
 		if (skillSelection < 20 && (hero[0].hpPerc < 0.85 || hero[4].hpPerc < 0.85)) {
@@ -57,21 +57,21 @@ void heroattack(int k, bool dual) {
 			}
 		}
 		else {
-			float skillmodifier = (rand() % 50 + 110);
-			skillmodifier /= 100;
-			attackvalue = hero[k].power * skillmodifier;
+			float skillModifier = (rand() % 50 + 110);
+			skillModifier /= 100;
+			attackValue = hero[k].power * skillModifier;
 			if (!dual) {
 				hero[k].sp -= 2;
 			}
 		}
 	}
-	bool critroll = RNGroll(hero[k].critchance);
-	if (critroll) {
-		attackvalue *= hero[k].critdamage;
+	bool critRoll = RNGroll(hero[k].critChance);
+	if (critRoll) {
+		attackValue *= hero[k].critDamage;
 	}
-	bool evaderoll = RNGroll(2.5);
-	if (!evaderoll) {
-		hpdummy -= attackvalue;
+	bool evadeRoll = RNGroll(2.5);
+	if (!evadeRoll) {
+		hpDummy -= attackValue;
 		petSelection(k);
 	}
 }

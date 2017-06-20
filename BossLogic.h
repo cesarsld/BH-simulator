@@ -6,4 +6,4 @@
 #include <stdbool.h>
 #pragma once
 
-void bossattack();
+void bossAttack();

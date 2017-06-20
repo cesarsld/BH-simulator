@@ -18,6 +18,6 @@ void hpPerc();
 
 int healLogic();
 
-int TargetSelection(int method);
+int targetSelection(int method);
 
-int BossSkillSelection(int sp, float *finalAttack);
+int bossSkillSelection(int sp, float *finalAttack);

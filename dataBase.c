@@ -26,9 +26,9 @@ void encon(int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 17; // input crit chance
+    hero[i].critChance = 17; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 1.5; // input Dual strik chance
     
@@ -38,11 +38,11 @@ void encon(int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.07; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.07; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "nelson"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
     
@@ -60,9 +60,9 @@ void hai(int i){
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 14; // input Dual strik chance
     
@@ -72,11 +72,11 @@ void hai(int i){
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.075; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.075; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
     
@@ -92,9 +92,9 @@ void xionix (int i){
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 0; // input Dual strik chance
     
@@ -104,11 +104,11 @@ void xionix (int i){
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "nelson"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 
@@ -124,9 +124,9 @@ void rikkiG (int i){
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 25; // input crit chance
+    hero[i].critChance = 25; // input crit chance
     
-    hero[i].critdamage = 2; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 2; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 2.5; // input Dual strik chance
     
@@ -136,11 +136,11 @@ void rikkiG (int i){
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.025; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.025; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -155,9 +155,9 @@ void iamJosh (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 0; // input Dual strik chance
     
@@ -167,11 +167,11 @@ void iamJosh (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.04; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.04; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "nelson"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 
@@ -187,9 +187,9 @@ void byleth (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 2.5; // input Dual strik chance
     
@@ -199,11 +199,11 @@ void byleth (int i) {
     
     hero[i].deflect = 5; // input deflect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 
@@ -219,9 +219,9 @@ void casper (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 40; // input crit chance
+    hero[i].critChance = 40; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 4; // input Dual strik chance
     
@@ -231,11 +231,11 @@ void casper (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.06; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.06; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -250,9 +250,9 @@ void shadown (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 15; // input crit chance
+    hero[i].critChance = 15; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 1.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 1.5
     
     hero[i].DSchance = 15; // input Dual strik chance
     
@@ -262,11 +262,11 @@ void shadown (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.175; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.175; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -281,9 +281,9 @@ void souji (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 25; // input crit chance
+    hero[i].critChance = 25; // input crit chance
     
-    hero[i].critdamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 2.5; // input Dual strik chance
     
@@ -293,11 +293,11 @@ void souji (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1.08; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1.08; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -312,9 +312,9 @@ void borealis (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 0; // input Dual strik chance
     
@@ -324,11 +324,11 @@ void borealis (int i) {
     
     hero[i].deflect = 5; // input delfect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 
@@ -344,9 +344,9 @@ void steelfrag (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = .1; // input crit chance
+    hero[i].critChance = .1; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 0; // input Dual strik chance
     
@@ -356,11 +356,11 @@ void steelfrag (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "nelson"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -375,9 +375,9 @@ void sss (int i){
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 25; // input crit chance
+    hero[i].critChance = 25; // input crit chance
     
-    hero[i].critdamage = 2.0; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 2.0; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 5; // input Dual strik chance
     
@@ -387,11 +387,11 @@ void sss (int i){
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.05; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.05; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1.025; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1.025; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -406,9 +406,9 @@ void tobey (int i){
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 25; // input crit chance
+    hero[i].critChance = 25; // input crit chance
     
-    hero[i].critdamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 7.5; // input Dual strik chance
     
@@ -418,11 +418,11 @@ void tobey (int i){
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.05; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.05; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "boogie"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "boogie"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 
@@ -438,9 +438,9 @@ void alchemie (int i){
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 10; // input Dual strik chance
     
@@ -450,11 +450,11 @@ void alchemie (int i){
     
     hero[i].deflect = 2.5; // input delfect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1.025; // if you have 10% speed runes, input 1.1 (?? I have 2.5 speed rune?)
+    hero[i].agiRune = 1.025; // if you have 10% speed runes, input 1.1 (?? I have 2.5 speed rune?)
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either (I don't have either)
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo (I don't have either)
     
     hero[i].alive = true; // no need to change this value
 }
@@ -469,9 +469,9 @@ void taters (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 20; // input crit chance
+    hero[i].critChance = 20; // input crit chance
     
-    hero[i].critdamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 1.5; // input Dual strik chance
     
@@ -481,11 +481,11 @@ void taters (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.145; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.145; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1.02; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1.02; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 
@@ -501,9 +501,9 @@ void sils (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 0; // input Dual strik chance
     
@@ -513,11 +513,11 @@ void sils (int i) {
     
     hero[i].deflect = 5; // input delfect chance
     
-    hero[i].powerrune = 1; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "gemmi"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "gemmi"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -532,9 +532,9 @@ void hypno (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 2; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 16; // input Dual strik chance
     
@@ -544,11 +544,11 @@ void hypno (int i) {
     
     hero[i].deflect = 0; // input delfect chance
     
-    hero[i].powerrune = 1.095; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.095; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "nelson"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
@@ -563,9 +563,9 @@ void psyk (int i) {
     
     hero[i].sp = 4; // no need to change this variable
     
-    hero[i].critchance = 10; // input crit chance
+    hero[i].critChance = 10; // input crit chance
     
-    hero[i].critdamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
+    hero[i].critDamage = 1.5; // if you have +50% crit damage, input 2, +100%, input 2.5
     
     hero[i].DSchance = 4.5; // input Dual strik chance
     
@@ -575,11 +575,11 @@ void psyk (int i) {
     
     hero[i].deflect = 6.25; // input delfect chance
     
-    hero[i].powerrune = 1.02; // if you have 5% damage runes, imput 1.05
+    hero[i].powerRune = 1.02; // if you have 5% damage runes, imput 1.05
     
-    hero[i].agirune = 1; // if you have 10% speed runes, input 1.1
+    hero[i].agiRune = 1; // if you have 10% speed runes, input 1.1
     
-    strcpy (hero[i].pet, "nelson"); //For now I only have gemmi and nelson so put either
+    strcpy (hero[i].pet, "nelson"); //Can choose between gemmi, boogie, nelson and nemo
     
     hero[i].alive = true; // no need to change this value
 }
