@@ -1,7 +1,7 @@
 //  BH Simulator
 //
-//  Created by Cesar Salad Jaimes on 01/06/2017.
-//  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
+//  Created by Shadown88 on 01/06/2017.
+//  Copyright © 2017 Shadown88. All rights reserved.
 //
 #include <stdbool.h>
 #pragma once
