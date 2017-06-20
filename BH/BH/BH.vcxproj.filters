@@ -33,9 +33,6 @@
     <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\BossLogic.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\GitHub\BH-Simulator\SideProjects.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\BHSimulator.h">
@@ -54,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\PetLogic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\GitHub\BH-Simulator\SideProjects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

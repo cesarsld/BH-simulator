@@ -1,8 +1,8 @@
 //  BHSimulator.c
 //  BH Simulator
 //
-//  Created by Cesar Salad Jaimes on 20/04/2017.
-//  Copyright © 2017 Cesar Salad Jaimes. All rights reserved.
+//  Created by Shadown88 on 20/04/2017.
+//  Copyright © 2017 Shadown88. All rights reserved.
 //
 
 #include <stdio.h>
