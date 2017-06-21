@@ -1,1 +1,10 @@
 BH/.vs/BH/v15/Browse.VC.opendb
+
+# Ignore object files
+*.o
+
+# Ignore the binary
+BHSimulator
+
+# Ignore a very annoying macOS system file
+*.DS_Store
