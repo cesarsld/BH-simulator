@@ -45,13 +45,15 @@ void spreadHealingSkill(int k) {
 
 void heroAttack(int k, bool dual) {
 	int skillSelection;
-	float attackValue = 0;
+	int attackValue = 0;
+	bool hasHealed = false;
 	int attackModifier = 0.2 * hero[k].power;
 	attackValue = rand() % attackModifier + 0.9 * hero[k].power;
 	if (hero[k].sp >= 2) {
 		skillSelection = rand() % 100;
 		if (skillSelection < 20 && (hero[0].hpPerc < 0.85 || hero[4].hpPerc < 0.85)) {
 			spreadHealingSkill(k);
+			hasHealed = true;
 			if (!dual) {
 				hero[k].sp -= 2;
 			}
@@ -70,7 +72,8 @@ void heroAttack(int k, bool dual) {
 		attackValue *= hero[k].critDamage;
 	}
 	bool evadeRoll = RNGroll(2.5);
-	if (!evadeRoll) {
+	if (!evadeRoll && !hasHealed) {
+		printf("boss = %d\n", hpDummy);
 		hpDummy -= attackValue;
 		petSelection(k);
 	}

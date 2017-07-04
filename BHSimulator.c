@@ -31,7 +31,7 @@ void simulation(){
     float lose=0;
     float winRate;
     
-    int games = 10000; //number of times fight will run.
+    int games = 1; //number of times fight will run.
     int playerNo;
     int counterMax = 100;
     int cycle;
@@ -48,84 +48,83 @@ void simulation(){
         teamAlive = true;
         playerNo = 5;
         
-        sils(0);
-        sss(1);
-        tobey(2);
-        shadown(3);
-        borealis(4);
+       // sils(0);
+        //sss(1);
+        //tobey(2);
+        //shadown(3);
+        //borealis(4);
 
         // Next lines of code can be used if you want a specfic setup. Otherwise use players from existing database.
-
-        /*hero[0].power = 440;
-        hero[1].power = 580;
-        hero[2].power = 930;
-        hero[3].power = 568;
-        hero[4].power = 100;
-        hero[0].stamina = 692;
-        hero[1].stamina = 185;
-        hero[2].stamina = 186;
-        hero[3].stamina = 205;
-        hero[4].stamina = 1010;
-        hero[0].agility = 101;
-        hero[1].agility = 450;
-        hero[2].agility = 240;
-        hero[3].agility = 555;
-        hero[4].agility = 100;
-        hero[0].sp = 4;
-        hero[1].sp = 4;
-        hero[2].sp = 4;
-        hero[3].sp = 4;
-        hero[4].sp = 4;
-        hero[0].critchance = 10;
-        hero[1].critchance = 15;
-        hero[2].critchance = 25;
-        hero[3].critchance = 25;
-        hero[4].critchance = 10;
-        hero[0].critdamage = 1.5;
-        hero[1].critdamage = 1.5;
-        hero[2].critdamage = 1.5;
-        hero[3].critdamage = 2;
-        hero[4].critdamage = 1.5;
-        hero[0].DSchance = 0;
-        hero[1].DSchance = 15;
-        hero[2].DSchance = 7.5;
-        hero[3].DSchance = 5;
-        hero[4].DSchance = 0;
-        hero[0].block = 30;
-        hero[1].block = 0;
-        hero[2].block = 0;
-        hero[3].block = 0;
-        hero[4].block = 40;
-        hero[0].evade = 14;
-        hero[1].evade = 2.5;
-        hero[2].evade = 2.5;
-        hero[3].evade = 2.5;
-        hero[4].evade = 12.5;
-        hero[0].deflect = 5;
-        hero[1].deflect = 0;
-        hero[2].deflect = 0;
-        hero[3].deflect = 0;
-        hero[4].deflect = 5;
-        hero[0].powerRune = 1;
-        hero[1].powerRune = 1.175;
-        hero[2].powerRune = 1.2;
-        hero[3].powerRune = 1.05;
-        hero[4].powerRune = 1;
-        hero[0].agiRune = 1;
-        hero[1].agiRune = 1;
-        hero[2].agiRune = 1;
-        hero[3].agiRune = 1.025;
-        hero[4].agiRune = 1;         
-        strcpy (hero[0].pet, "nelson");
-        strcpy (hero[1].pet, "gemmi");
-        strcpy (hero[2].pet, "nelson");
-        strcpy (hero[3].pet, "nelson");
-        strcpy (hero[4].pet, "gemmi");
-        hero[0].alive = true;
-        hero[1].alive = true;
-        hero[2].alive = true;
-        hero[3].alive = true;
-        hero[4].alive = true;*/
+		hero[0].power = 452;
+		hero[1].power = 600;
+		hero[2].power = 1020;
+		hero[3].power = 600;
+		hero[4].power = 100;
+		hero[0].stamina = 704;
+		hero[1].stamina = 200;
+		hero[2].stamina = 138;
+		hero[3].stamina = 200;
+		hero[4].stamina = 1010;
+		hero[0].agility = 101;
+		hero[1].agility = 600;
+		hero[2].agility = 77;
+		hero[3].agility = 555;
+		hero[4].agility = 100;
+		hero[0].sp = 4;
+		hero[1].sp = 4;
+		hero[2].sp = 4;
+		hero[3].sp = 4;
+		hero[4].sp = 4;
+		hero[0].critChance = 10;
+		hero[1].critChance = 29;
+		hero[2].critChance = 25;
+		hero[3].critChance = 10;
+		hero[4].critChance = 10;
+		hero[0].critDamage = 1.5f;
+		hero[1].critDamage = 1.5f;
+		hero[2].critDamage = 1.5f;
+		hero[3].critDamage = 1.5f;
+		hero[4].critDamage = 1.5f;
+		hero[0].DSchance = 0;
+		hero[1].DSchance = 7.5f;
+		hero[2].DSchance = 18;
+		hero[3].DSchance = 10;
+		hero[4].DSchance = 0;
+		hero[0].block = 31;
+		hero[1].block = 0;
+		hero[2].block = 0;
+		hero[3].block = 0;
+		hero[4].block = 40;
+		hero[0].evade = 14;
+		hero[1].evade = 2.5f;
+		hero[2].evade = 2.5f;
+		hero[3].evade = 2.5f;
+		hero[4].evade = 12.5f;
+		hero[0].deflect = 5;
+		hero[1].deflect = 0;
+		hero[2].deflect = 0;
+		hero[3].deflect = 0;
+		hero[4].deflect = 5;
+		hero[0].powerRune = 1;
+		hero[1].powerRune = 1.22f;
+		hero[2].powerRune = 1.155f;
+		hero[3].powerRune = 1.16f;
+		hero[4].powerRune = 1;
+		hero[0].agiRune = 1;
+		hero[1].agiRune = 1;
+		hero[2].agiRune = 1;
+		hero[3].agiRune = 1.025f;
+		hero[4].agiRune = 1;
+		strcpy(hero[0].pet, "gemmi");
+		strcpy(hero[1].pet, "nelson");
+		strcpy(hero[2].pet, "nelson");
+		strcpy(hero[3].pet, "nelson");
+		strcpy(hero[4].pet, "boogie");
+		hero[0].alive = true;
+		hero[1].alive = true;
+		hero[2].alive = true;
+		hero[3].alive = true;
+		hero[4].alive = true;
 
         
         hpDummy = dummyStamina * 10;
@@ -135,7 +134,7 @@ void simulation(){
 
         for(i=0 ; i<playerNo ; i++){  //initialisation
             hero[i].tr = turnRate(hero[i].power, hero[i].agility);
-            hero[i].power *= hero[i].powerRune;
+            hero[i].power =  (int)(hero[i].power * hero[i].powerRune);
             hero[i].tr *= hero[i].agiRune;
             hero[i].hp = hero[i].stamina * 10;
             hero[i].maxHP = hero[i].hp;
@@ -182,6 +181,7 @@ void simulation(){
                         teamAlive = false;
                         cycle = counterMax;
                     }
+					printf("boss attacked p0 = %d p1 = %d p2 = %d p3 = %d p4 = %d \n", hero[0].hp, hero[1].hp, hero[2].hp, hero[3].hp, hero[4].hp);
                 }
             }
         }
@@ -195,15 +195,34 @@ void simulation(){
     printf("winRate = %f %%\n", winRate);         
 }
 
-int main(){
-    srand((unsigned int)time(NULL));
-    int i;
-    for (i=0; i<1;i++){
-        simulation();
+int main() {
+	srand((unsigned int)time(NULL));
+	int i;
+	for (i = 0; i < 1; i++) {
 
-		//dummyFight();
-        //BHungerGames();
-        //accsim();
-    }
-	getchar();
+		/*int q = 0, a = 0, b = 0;
+		bool te;
+		int s;
+		for (s = 0; s < 10; s++) {
+			a = 0;
+			b = 0;
+			for (q = 0; q < 1000000; q++)
+			{
+				te = RNGroll(10);
+				if (te)
+				{
+					a++;
+				}
+				else { b++; }
+			}
+			printf("a = %d ; b = %d ", a, b);*/
+
+
+			//dummyFight();
+			//BHungerGames();
+			//accsim();
+	
+	    simulation();
+		getchar();
+	}
 }

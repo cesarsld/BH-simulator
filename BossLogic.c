@@ -24,7 +24,7 @@ extern int dummyPower, spDummy, hpDummy;
 
 void bossAttack() {
 	int k;
-	float attackValue = 0;
+	int attackValue = 0;
 	int target;
 	target = bossSkillSelection(spDummy, &attackValue);
 
@@ -35,6 +35,7 @@ void bossAttack() {
 	bool critRoll = RNGroll(10);
 	redirectRoll = RNGroll(25);
 	if (redirectRoll) {
+		printf("redirect successful\n");
 		k = 4;
 	}
 	if (critRoll) {
@@ -46,6 +47,7 @@ void bossAttack() {
 		if (!evadeRoll) {
 			blockRoll = RNGroll(hero[k].block);
 			if (blockRoll) {
+				printf("block successful\n");
 				hero[k].hp -= 0.5 * attackValue;
 				if (hero[k].hp <= 0) {
 					hero[k].alive = false;
@@ -62,10 +64,11 @@ void bossAttack() {
 				else {
 					petSelection(k);
 				}
-			}
-		}
+			} 
+		} else { printf("evade successful\n"); }
 	}
 	else {
+		printf("deflect successful\n");
 		hpDummy -= attackValue;
 
 	}

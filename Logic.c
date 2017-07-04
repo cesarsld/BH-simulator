@@ -22,7 +22,7 @@ extern int dummyPower, spDummy;
 bool RNGroll(float a) {
 	bool outcome;
 	float chance = a * 10;
-	int roll = rand() % 1000 + 1;
+	float roll = (float)(rand() % 1000 + 1);
 	if (roll <= chance) {
 		outcome = true;
 	}
@@ -32,7 +32,7 @@ bool RNGroll(float a) {
 	return outcome;
 }
 
-float turnRate(long b, long a) {
+float turnRate(int b, int a) {
 	float tr = 0;
 	tr = ((a + b) / 2);
 	tr = pow(tr, 2);
@@ -75,13 +75,13 @@ int healLogic() {
 	int lowest = 0;
 	hpPerc();
 	for (i = 0; i<4; i++) {
-		if (hero[i].hpPerc <= hero[i + 1].hpPerc) {
-			if (hero[i].alive) {
-				lowest = i;
+		if (hero[lowest].hpPerc >= hero[i + 1].hpPerc) {
+			if (hero[i + 1].alive) {
+				lowest = i + 1;
 			}
 		}
 		else {
-			if (hero[i + 1].alive) {
+			if (!hero[lowest].alive) {
 				lowest = i + 1;
 			}
 		}
@@ -124,7 +124,7 @@ int targetSelection(int method) {
 	return target;
 }
 
-int bossSkillSelection(int sp, float *finalAttack) {
+int bossSkillSelection(int sp, int *finalAttack) {
 	float attackValue = 0;
 	int skillRoll = 0;
 	int attackModifier = 0;

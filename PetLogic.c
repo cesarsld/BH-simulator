@@ -29,9 +29,10 @@ void offPetProc(int l) {
 	bool petRoll = RNGroll(20);
 
 	if (critRoll) {
-		attackValue *= hero[l].critDamage;
+		attackValue = (int)(attackValue *hero[l].critDamage);
 	}
 	if (petRoll) {
+		printf("pet proc successful\n");
 		hpDummy -= attackValue;
 	}
 
