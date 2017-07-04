@@ -21,7 +21,7 @@
 
 Hero hero[5];           // size of array indicated max amount of heroes in team.
 
-int dummyPower = 1700, dummyStamina = 3060, dummyAgility = 680, hpDummy, spDummy=0; //heroic Kaleido parameters
+int dummyPower = 1600, dummyStamina = 2880, dummyAgility = 640, hpDummy, spDummy=0; //heroic Kaleido parameters
 
 void simulation(){
     int p;
@@ -31,7 +31,7 @@ void simulation(){
     float lose=0;
     float winRate;
     
-    int games = 1; //number of times fight will run.
+    int games = 10000; //number of times fight will run.
     int playerNo;
     int counterMax = 100;
     int cycle;
@@ -181,7 +181,7 @@ void simulation(){
                         teamAlive = false;
                         cycle = counterMax;
                     }
-					printf("boss attacked p0 = %d p1 = %d p2 = %d p3 = %d p4 = %d \n", hero[0].hp, hero[1].hp, hero[2].hp, hero[3].hp, hero[4].hp);
+					//printf("boss attacked p0 = %d p1 = %d p2 = %d p3 = %d p4 = %d \n", hero[0].hp, hero[1].hp, hero[2].hp, hero[3].hp, hero[4].hp);
                 }
             }
         }

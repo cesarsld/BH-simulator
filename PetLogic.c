@@ -32,7 +32,7 @@ void offPetProc(int l) {
 		attackValue = (int)(attackValue *hero[l].critDamage);
 	}
 	if (petRoll) {
-		printf("pet proc successful\n");
+		//printf("pet proc successful\n");
 		hpDummy -= attackValue;
 	}
 

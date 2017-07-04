@@ -35,7 +35,7 @@ void bossAttack() {
 	bool critRoll = RNGroll(10);
 	redirectRoll = RNGroll(25);
 	if (redirectRoll) {
-		printf("redirect successful\n");
+		//printf("redirect successful\n");
 		k = 4;
 	}
 	if (critRoll) {
@@ -47,7 +47,7 @@ void bossAttack() {
 		if (!evadeRoll) {
 			blockRoll = RNGroll(hero[k].block);
 			if (blockRoll) {
-				printf("block successful\n");
+				//printf("block successful\n");
 				hero[k].hp -= 0.5 * attackValue;
 				if (hero[k].hp <= 0) {
 					hero[k].alive = false;
@@ -65,10 +65,11 @@ void bossAttack() {
 					petSelection(k);
 				}
 			} 
-		} else { printf("evade successful\n"); }
+		} else { //printf("evade successful\n"); 
+		}
 	}
 	else {
-		printf("deflect successful\n");
+		//printf("deflect successful\n");
 		hpDummy -= attackValue;
 
 	}

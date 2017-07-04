@@ -73,7 +73,7 @@ void heroAttack(int k, bool dual) {
 	}
 	bool evadeRoll = RNGroll(2.5);
 	if (!evadeRoll && !hasHealed) {
-		printf("boss = %d\n", hpDummy);
+		//printf("boss = %d\n", hpDummy);
 		hpDummy -= attackValue;
 		petSelection(k);
 	}
