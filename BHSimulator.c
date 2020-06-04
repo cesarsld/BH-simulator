@@ -2,7 +2,7 @@
 //  BH Simulator
 //
 //  Created by Shadown88 on 20/04/2017.
-//  Copyright © 2017 Shadown88. All rights reserved.
+//  Copyright © 2020 tiemonl. All rights reserved.
 //
 
 #include <stdio.h>
